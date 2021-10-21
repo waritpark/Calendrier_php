@@ -13,7 +13,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Inscription</legendfield>
-            <form action="test.php" method="post" class="mt-4">
+            <form action="easy_register.php" method="post" class="mt-4">
             <div class="mb-3">
                 <label for="mail" class="form-label">Adresse mail</label>
                 <input type="email" class="form-control" id="mail" name="mail" aria-describedby="emailHelp">

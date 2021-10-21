@@ -6,12 +6,12 @@
         <div class="col-6">
             <?php if (!empty($_SESSION['recuperation'])) {
                 foreach ($_SESSION['recuperation'] as $error) {?>
-                <div><?php echo $error[0]; ?></div>
-                <div><?php echo $error[1]; ?></div>
+                <div class="text-danger"><?php echo $error[0]; ?></div>
+                <div class="text-success"><?php echo $error[1]; ?></div>
             <?php }
             }; ?>
             <legendfield class="h2">Modifier le mot passe</legendfield>
-            <form action="modifMDP.php" method="post" class="mt-4">
+            <form action="change_password.php" method="post" class="mt-4">
             <div class="mb-3">
                 <div><?php $errs ?></div>
                 <label for="pseudo" class="form-label">Pseudo</label>

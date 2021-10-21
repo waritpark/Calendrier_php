@@ -40,14 +40,11 @@ if(isset($_POST['pseudo'])
 
         //===== Envoi du mail
         mail($to, $objet, $message, $header);
-        array_push($_SESSION['recuperation'],["Un mail a été envoyé à votre adresse mail.","success"]);
+        array_push($_SESSION['recuperation'],["","Un mail a été envoyé à votre adresse mail."]);
         header("Location:recuperation.php");
     }
     else {
-        array_push($_SESSION['recuperation'],["Votre mail est incorrect.", "danger"]);
+        array_push($_SESSION['recuperation'],["Votre mail est incorrect.", ""]);
         header("Location:recuperation.php");
     }
-    header("Location:echec.php");
 }
-array_push($_SESSION['recuperation'],["Veuillez remplir les champs ci-dessous.", "danger"]);
-header("Location:recuperation.php");
