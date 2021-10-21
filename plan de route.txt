@@ -35,7 +35,7 @@ Fonctionnalités :
 
 Prépare les requêtes SQL.
 
-- Aucun attributs html, tout est gérer en php.
+- Aucun attributs html, tout est géré en php.
 
 - Fonctions PHP :
     - Traite les données avant la requête :
@@ -63,7 +63,7 @@ Prépare les requêtes SQL.
 
 Prépare les requêtes SQL.
 
-- Aucun attributs html, tout est gérer en php.
+- Aucun attributs html, tout est géré en php.
 
 !!! Manque actuellement les erreurs relevés avec PHP !!!
 !!! La récupération de mot de passe par mail n'est pas terminé !!!
