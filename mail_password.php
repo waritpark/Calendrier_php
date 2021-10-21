@@ -23,14 +23,10 @@ if(isset($_POST['pseudo'])
         $req2->execute([$token_hash, $_POST["mail"]]);
 
         // variables du mail
-        $link = "http://localhost/base-learn?token'.$token.'";
+        $link = "http://localhost/base-learn/modif_password?token='.$token.'?mail='.$mail.'";
         $objet = 'Nouveau mot de passe';
         $to = 'lafarge21@hotmail.fr';
-        $header =[];
-        $header = "From: Support :<zzzzzzz@zzzz.zz> \n";
-        $header = "MIME-version: 1.0\n";
-        $header = "Content-type: text/html; charset=utf-8\n";
-        $header = "Content-Transfer-Encoding: 8bit";
+        $headers =["From: Support :<zzzzzzz@zzzz.zz>","MIME-version: 1.0","Content-type: text/html; charset=utf-8","Content-Transfer-Encoding: 8bit"];
         $message = "<html>".
         "<body>".
         "<p>Veuillez cliquer sur le lien ci-dessous pour réinitialiser votre mot de passe et en recevoir un nouveau.</p>".
@@ -39,9 +35,17 @@ if(isset($_POST['pseudo'])
         "</html>";
 
         //===== Envoi du mail
-        mail($to, $objet, $message, $header);
-        array_push($_SESSION['recuperation'],["","Un mail a été envoyé à votre adresse mail."]);
-        header("Location:recuperation.php");
+        $success=mail($to, $objet, $message,implode("\r\n", $headers));
+        if (!$success) {
+            $error_message = error_get_last()['message'];
+            // array_push($_SESSION['recuperation'],["Echec de l'envoie.", ""]);
+            // header("Location:recuperation.php");
+        }
+        else{
+            $_SESSION['mail_change'] = $pseudo;
+            array_push($_SESSION['recuperation'],["","Un mail a été envoyé à votre adresse mail."]);
+            header("Location:recuperation.php");
+        }
     }
     else {
         array_push($_SESSION['recuperation'],["Votre mail est incorrect.", ""]);

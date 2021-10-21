@@ -1,3 +1,28 @@
+
+
+            - - - Dashboard avec plusieurs type de role - - - 
+
+Fonctionnalités :
+
+- Connexion :
+    Utilisation de session pour reveler les erreurs en PHP.
+    Modification de mot de passe par mail :
+        1 - Saisir le pseudo et adresse mail pour recevoir un mail.
+        2 - Recevoir le mail avec un lien qui possède dans l'url le mot de passe provisoire attribué et l'adresse mail.
+        3 - Accéder avec le lien à la page du formulaire de modification de mot de passe qui vérifiera en premier le mail
+        puis le mot de passe provisoire afin de modifier le mot de passe avec le nouveau entré par l'utilisateur.
+
+- Inscription :
+    Utilisation de session pour reveler les erreurs en PHP.
+    Utilisation de jquery (js à terme) pour afficher une jauge de fiabilité de mot de passe en fonction de sa complexité.
+
+- Dashboard :
+    Utilisation de session pour limiter l'accès en fonction du role.
+
+
+
+
+
 ---------- Formulaire d'inscription : ----------
 --- Informations : ---
 
@@ -6,14 +31,9 @@
 - mot de passe
 - répéter le mot de passe
 
---- Fonctionnalité ---
-
-- Utilisation de session pour afficher les erreurs sous chaque input.
-- Jauge de fiabilité du mot de passe en fonction de sa complexité.
-
 --- Sécurité : ---
 
-Prépare la requête SQL.
+Prépare les requêtes SQL.
 
 - Aucun attributs html, tout est gérer en php.
 
@@ -41,7 +61,12 @@ Prépare la requête SQL.
 
 --- Sécurité : ---
 
+Prépare les requêtes SQL.
+
 - Aucun attributs html, tout est gérer en php.
+
+!!! Manque actuellement les erreurs relevés avec PHP !!!
+!!! La récupération de mot de passe par mail n'est pas terminé !!!
 
 - Fonctions PHP :
     - Vérifie les données pour faire la requête :
@@ -51,14 +76,6 @@ Prépare la requête SQL.
 
     - Vérifie le mot de passe haché :
         password_verify()
-
---- Fonctionnalité ---
-
-- Utilisation de session pour déterminer l'affichage du dashboard.
-- Utilisation de session pour afficher les erreurs.
-
-
-
 
 
 ---------- Dashboard utilisateur : ----------
