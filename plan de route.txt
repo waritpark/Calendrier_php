@@ -1,0 +1,68 @@
+---------- Formulaire d'inscription : ----------
+--- Informations : ---
+
+- mail
+- pseudo
+- mot de passe
+- répéter le mot de passe
+
+--- Fonctionnalité ---
+
+- Utilisation de session pour afficher les erreurs sous chaque input.
+- Jauge de fiabilité du mot de passe en fonction de sa complexité.
+
+--- Sécurité : ---
+
+Prépare la requête SQL.
+
+- Aucun attributs html, tout est gérer en php.
+
+- Fonctions PHP :
+    - Traite les données avant la requête :
+        stripslashes()
+        trim()
+        htmlspecialchars()
+
+    - Vérifie les données pour faire la requête :
+        isset()
+        empty()
+        strlen()
+
+    - Hache le mot de passe :
+        password_hash()
+
+    - Vérifie la conformité de l'adresse mail :
+        filter_var()
+    
+
+
+
+---------- Formulaire de connexion : ----------
+
+--- Sécurité : ---
+
+- Aucun attributs html, tout est gérer en php.
+
+- Fonctions PHP :
+    - Vérifie les données pour faire la requête :
+        isset()
+        empty()
+        strlen()
+
+    - Vérifie le mot de passe haché :
+        password_verify()
+
+--- Fonctionnalité ---
+
+- Utilisation de session pour déterminer l'affichage du dashboard.
+- Utilisation de session pour afficher les erreurs.
+
+
+
+
+
+---------- Dashboard utilisateur : ----------
+
+
+
+
