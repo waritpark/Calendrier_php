@@ -24,6 +24,14 @@
                 <div class="fw-lighter">Votre pseudo doit contenir au minimum 6 caractères.</div>
             </div>
             <div class="mb-3">
+                <label for="nom" class="form-label">Nom</label>
+                <input type="text" class="form-control" name="nom" id="nom">
+            </div>
+            <div class="mb-3">
+                <label for="prenom" class="form-label">Prénom</label>
+                <input type="text" class="form-control" name="prenom" id="prenom">
+            </div>
+            <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe</label>
                 <input type="password" class="form-control" name="password" id="password">
             </div>
@@ -32,8 +40,7 @@
                 <label for="password2" class="form-label">Répétez le mot de passe</label>
                 <input type="password" class="form-control" name="password2" id="password2">
             </div>
-            <div id="egal"></div>
-            <button type="submit" class="btn btn-primary">Inscription</button>
+            <button type="submit" class="btn btn-primary mb-4">Inscription</button>
             </form>
         </div>
     </div>

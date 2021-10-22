@@ -7,10 +7,10 @@ Fonctionnalités :
 - Connexion :
     Utilisation de session pour reveler les erreurs en PHP.
     Modification de mot de passe par mail :
-        1 - Saisir le pseudo et adresse mail pour recevoir un mail.
-        2 - Recevoir le mail avec un lien qui possède dans l'url le mot de passe provisoire attribué et l'adresse mail.
+        1 - Saisir le nom et adresse mail pour recevoir un mail.
+        2 - Recevoir le mail avec un lien qui possède un token + mail de la personne pour modifier le mot de passe.
         3 - Accéder avec le lien à la page du formulaire de modification de mot de passe qui vérifiera en premier le mail
-        puis le mot de passe provisoire afin de modifier le mot de passe avec le nouveau entré par l'utilisateur.
+        puis le token afin de modifier le mot de passe avec le nouveau entré par l'utilisateur.
 
 - Inscription :
     Utilisation de session pour reveler les erreurs en PHP.
@@ -28,6 +28,9 @@ Fonctionnalités :
 
 - mail
 - pseudo
+- nom
+- prenom
+- niveau scolaire
 - mot de passe
 - répéter le mot de passe
 

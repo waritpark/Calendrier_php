@@ -10,12 +10,10 @@
 
         <?php if($_SESSION['role']== 2):  ?>
         <?php echo 'Bonjour ' .$_SESSION['pseudo'].'. Vous êtes un utilisateur.'; ?> <br>
-        <?php // echo var_dump($_SESSION['role']); ?><br>
 
 
         <?php elseif($_SESSION['role']== 1): ?>
         <?php echo 'Bonjour ' .$_SESSION['pseudo'].'. Vous êtes un admin.'; ?> <br>
-        <?php // echo var_dump($_SESSION['role']); ?><br>
 
 
         <?php else: ?>

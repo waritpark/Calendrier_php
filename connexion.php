@@ -10,11 +10,16 @@
                 <div class="text-success"><?php echo $error[1]; ?></div>
             <?php }
             }; ?>
+            <?php if (!empty($_SESSION['connexion'])) {
+                foreach ($_SESSION['connexion'] as $error) {?>
+                <div class="text-danger"><?php echo $error; ?></div>
+            <?php }
+            }; ?>
             <legendfield class="h2">Connexion</legendfield>
-            <form action="login.php" method="post" class="mt-4">
+            <form action="real_login.php" method="post" class="mt-4">
             <div class="mb-3">
-                <label for="pseudo" class="form-label">Pseudo</label>
-                <input type="text" class="form-control" id="pseudo" name="pseudo">
+                <label for="mail" class="form-label">Adresse mail</label>
+                <input type="mail" class="form-control" id="mail" name="mail">
             </div>
             <div class="mb-3">
                 <label for="password" class="form-label">Mot de passe</label>
@@ -31,3 +36,4 @@
 <?php require('footer.php'); ?>
 
 <?php unset($_SESSION['changermdp']) ?>
+<?php unset($_SESSION['connexion']) ?>
