@@ -11,7 +11,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Modifier le mot passe</legendfield>
-            <form action="mail_password.php" method="post" class="mt-4">
+            <form action="test_mail.php" method="post" class="mt-4">
             <div class="mb-3">
                 <div><?php $errs ?></div>
                 <label for="pseudo" class="form-label">Pseudo</label>

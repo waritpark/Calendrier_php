@@ -10,18 +10,24 @@ if(isset($_POST['pseudo'])
 && filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
     $pseudo=$_POST['pseudo'];
     $mail=$_POST['mail'];
-    $req1=$bdd->prepare("SELECT * FROM utilisateur WHERE mail= ?");
+    $req1=$bdd->prepare("SELECT * FROM t_utilisateur WHERE mail= ?");
     $req1->execute([$mail]);
     $resultrow=$req1->fetch(PDO::FETCH_ASSOC);
     if ($resultrow) {
         $string = implode('', array_merge(range('A', 'Z'), range('a', 'z'), range('0', '9')));
         $token = substr(str_shuffle($string), 0, 20);
-        $token_hash = password_hash($token, PASSWORD_DEFAULT);
-        $req2=$bdd->prepare("UPDATE utilisateur SET mdp =? WHERE mail=? ");
-        // $req2->bindValue(1, $token);
-        // $req2->bindValue(2, $_POST["mail"]);
-        $req2->execute([$token_hash, $_POST["mail"]]);
+        $_SESSION['mail_change'] = $token;
 
+        $mail_recup_exist = $bdd->prepare("SELECT ID_recup FROM t_recuperation WHERE mail_recup=?");
+        $mail_recup_exist->execute(array($recup_mail));
+        $mail_recup_exist=$mail_recup_exist->rowCount();
+        if ($mail_recup_exist==1) {
+            $req2=$bdd->prepare("UPDATE t_recuperation SET token_recup=? WHERE mail_recup=?");
+            $req2->execute([$token, $_POST["mail"]]);
+        } else {
+            $req2=$bdd->prepare("INSERT INTO t_recuperation(mail_recup,token_recup) VALUES (?, ?)");
+            $req2->execute([$token, $_POST["mail"]]);
+        };
         // variables du mail
         $link = "http://localhost/base-learn/modif_password?token='.$token.'?mail='.$mail.'";
         $objet = 'Nouveau mot de passe';
@@ -42,7 +48,6 @@ if(isset($_POST['pseudo'])
             // header("Location:recuperation.php");
         }
         else{
-            $_SESSION['mail_change'] = $pseudo;
             array_push($_SESSION['recuperation'],["","Un mail a été envoyé à votre adresse mail."]);
             header("Location:recuperation.php");
         }

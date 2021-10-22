@@ -10,7 +10,7 @@ session_start();
             if ($_POST['pseudo']!="" && $_POST['password']!=""){
                 $pseudo = $_POST['pseudo'];
                 $mdp = $_POST['password'];
-                $req1= "SELECT * FROM utilisateur WHERE pseudo='$pseudo'";
+                $req1= "SELECT * FROM t_utilisateur WHERE pseudo='$pseudo'";
                 $result=$bdd->query($req1);
                 $resultrow=$result->fetch(PDO::FETCH_ASSOC);
                 // var_dump($resultrow);

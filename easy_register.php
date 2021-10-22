@@ -25,7 +25,7 @@ if (isset($_POST["mail"])
     && !empty($_POST["password"]) 
     && filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)
     && $_POST["password"]===$_POST["password2"]) {
-    $req1 = $bdd->prepare("SELECT pseudo FROM utilisateur WHERE pseudo=?");
+    $req1 = $bdd->prepare("SELECT pseudo FROM t_utilisateur WHERE pseudo=?");
     $req1->execute([$pseudo]); 
     $user = $req1->fetch();
     if ($user) {
@@ -34,7 +34,7 @@ if (isset($_POST["mail"])
     }
     else {
         try {
-            $req = $bdd->prepare("INSERT INTO utilisateur (mail, pseudo, mdp, role_id) VALUES (:mail, :pseudo, :mdp, 2)");
+            $req = $bdd->prepare("INSERT INTO t_utilisateur (mail, pseudo, mdp, role_id) VALUES (:mail, :pseudo, :mdp, 2)");
             $req->fetch(PDO::FETCH_ASSOC);
             $req->execute(array(
                 "mail" => $mail,

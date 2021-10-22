@@ -19,8 +19,8 @@
                 <input type="mail" disabled hidden class="form-control" id="mail" name="mail" value="<?php $_GET['mail'] ?>">
             </div>
             <div class="mb-3">
-                <label for="old_password" class="form-label">Mot de passe attribué provisoirement :</label>
-                <input type="text" disabled class="form-control" id="old_password" name="old_password" value="<?php $_GET['token'] ?>">
+                <label for="token" class="form-label">Mot de passe attribué provisoirement :</label>
+                <input type="text" disabled hidden class="form-control" id="token" name="token" value="<?php $_GET['token'] ?>">
             </div>
             <div class="mb-3">
                 <label for="new_password" class="form-label">Noveau mot de passe</label>
