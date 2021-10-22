@@ -1,0 +1,9 @@
+.w-14 {
+    width: 14%;
+}
+#calendar-table {
+    min-height: 500px;
+}
+.calendar-othermonth {
+    background-color: blue;
+}
