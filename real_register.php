@@ -66,7 +66,7 @@ if (isset($_POST["mail"])
                                                     }
                                                     else {
                                                         if (filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
-                                                            $req1 = $bdd->prepare("SELECT pseudo FROM t_utilisateur WHERE pseudo=?");
+                                                            $req1 = $pdo->prepare("SELECT pseudo FROM t_utilisateur WHERE pseudo=?");
                                                             $req1->execute([$pseudo]); 
                                                             $user = $req1->fetch();
                                                             if ($user) {
@@ -75,7 +75,7 @@ if (isset($_POST["mail"])
                                                             }
                                                             else {
                                                                 try {
-                                                                    $req = $bdd->prepare("INSERT INTO t_utilisateur (mail, pseudo, nom, prenom, mdp, role_id) VALUES (:mail, :pseudo, nom:, prenom:, :mdp, 2)");
+                                                                    $req = $pdo->prepare("INSERT INTO t_utilisateur (mail, pseudo, nom, prenom, mdp, role_id) VALUES (:mail, :pseudo, nom:, prenom:, :mdp, 2)");
                                                                     $req->fetch(PDO::FETCH_ASSOC);
                                                                     $req->execute(array(
                                                                         "mail" => $mail,

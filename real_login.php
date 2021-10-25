@@ -10,7 +10,7 @@ if(isset($_POST['mail']) && isset($_POST['password']))  {
                 $mail = $_POST['mail'];
                 $mdp = $_POST['password'];
                 $req1= "SELECT * FROM t_utilisateur WHERE mail='$mail'";
-                $result=$bdd->query($req1);
+                $result=$pdo->query($req1);
                 $resultrow=$result->fetch(PDO::FETCH_ASSOC);
                 if (password_verify($mdp, $resultrow['mdp'])) {
                     if($mail !="") {

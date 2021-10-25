@@ -1,9 +1,67 @@
+/* hover des td pour chaque mois */
+td:hover {
+    transform: scale(1.2);
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+.td-month-Janvier:hover{
+    background-color:rgb(255, 193, 158);
+}
+.td-month-Février:hover{
+    background-color:rgb(255, 158, 158);
+}
+.td-month-Mars:hover{
+    background-color:rgb(222, 255, 191);
+}
+.td-month-Avril:hover{
+    background-color:rgb(198, 255, 236);
+}
+.td-month-Mai:hover{
+    background-color:rgb(190, 250, 255);
+}
+.td-month-Juin:hover{
+    background-color:rgb(200, 215, 255);
+}
+.td-month-Juillet:hover{
+    background-color:rgb(233, 199, 255);
+}
+.td-month-Aout:hover{
+    background-color:rgb(255, 205, 251);
+}
+.td-month-Septembre:hover{
+    background-color:rgb(255, 203, 225);
+}
+.td-month-Octobre:hover{
+    background-color:rgb(255, 187, 187);
+}
+.td-month-Novembre:hover{
+    background-color:rgb(197, 227, 255);
+}
+.td-month-Décembre:hover{
+    background-color:rgb(211, 228, 185);
+}
+
+
 .w-14 {
     width: 14%;
+}
+.w-300 {
+    width: 300px;
+}
+.w-800 {
+    width: 800px;
+}
+.vh-80 {
+    height: 80vh;
 }
 #calendar-table {
     min-height: 500px;
 }
-.calendar-othermonth {
-    background-color: blue;
+#calendar-table td {
+    height: 130px;
 }
+.text-second {
+    color: rgb(197, 197, 197);
+}
+
+

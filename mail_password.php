@@ -10,7 +10,7 @@ if(isset($_POST['pseudo'])
 && filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
     $pseudo=$_POST['pseudo'];
     $mail=$_POST['mail'];
-    $req1=$bdd->prepare("SELECT * FROM t_utilisateur WHERE mail= ?");
+    $req1=$pdo->prepare("SELECT * FROM t_utilisateur WHERE mail= ?");
     $req1->execute([$mail]);
     $resultrow=$req1->fetch(PDO::FETCH_ASSOC);
     if ($resultrow) {
@@ -18,14 +18,14 @@ if(isset($_POST['pseudo'])
         $token = substr(str_shuffle($string), 0, 20);
         $_SESSION['mail_change'] = $token;
 
-        $mail_recup_exist = $bdd->prepare("SELECT ID_recup FROM t_recuperation WHERE mail_recup=?");
+        $mail_recup_exist = $pdo->prepare("SELECT ID_recup FROM t_recuperation WHERE mail_recup=?");
         $mail_recup_exist->execute(array($recup_mail));
         $mail_recup_exist=$mail_recup_exist->rowCount();
         if ($mail_recup_exist==1) {
-            $req2=$bdd->prepare("UPDATE t_recuperation SET token_recup=? WHERE mail_recup=?");
+            $req2=$pdo->prepare("UPDATE t_recuperation SET token_recup=? WHERE mail_recup=?");
             $req2->execute([$token, $_POST["mail"]]);
         } else {
-            $req2=$bdd->prepare("INSERT INTO t_recuperation(mail_recup,token_recup) VALUES (?, ?)");
+            $req2=$pdo->prepare("INSERT INTO t_recuperation(mail_recup,token_recup) VALUES (?, ?)");
             $req2->execute([$token, $_POST["mail"]]);
         };
         // variables du mail
