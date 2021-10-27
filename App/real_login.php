@@ -17,37 +17,37 @@ if(isset($_POST['mail']) && isset($_POST['password']))  {
                         $_SESSION['metier']=$resultrow['metier'];
                         $_SESSION['pseudo']=$resultrow['pseudo'];
                         $_SESSION['role']=$resultrow['role_id'];
-                        header('Location:dashboard.php');
+                        header('Location:../Views/dashboard.php');
                     }
                     else {
                         array_push($_SESSION['connexion'],"L'adresse mail est invalide.");
-                        header('Location:connexion.php');
+                        header('Location:../Forms/connexion.php');
                         session_destroy();
                     }
                 }
                 else {
                     array_push($_SESSION['connexion'],"Le mot de passe est incorrect.");
-                    header("Location:connexion.php");
+                    header("Location:../Forms/connexion.php");
                 }
             }
             else {
                 array_push($_SESSION['connexion'],"L'adresse mail est incorrect.");
-                header("Location:connexion.php");
+                header("Location:../Forms/connexion.php");
             }
         }
         else {
             array_push($_SESSION['connexion'],"Veuillez entrer votre mot de passe.");
-            header("Location:connexion.php");
+            header("Location:../Forms/connexion.php");
         }
     }
     else {
         array_push($_SESSION['connexion'],"Veuillez entrer votre adresse mail.");
-        header("Location:connexion.php");
+        header("Location:../Forms/connexion.php");
     }
 }
 else {
     array_push($_SESSION['connexion'],"Un problème est survenue, veuillez réessayer.");
-    header("Location:connexion.php");
+    header("Location:../Forms/connexion.php");
 }
 
 

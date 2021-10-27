@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require('bdd.php'); ?>
-<?php require('header.php'); ?>
+<?php require('../App/bdd.php'); ?>
+<?php require('../Views/header.php'); ?>
 
     <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -11,7 +11,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Modifier le mot passe</legendfield>
-            <form action="test_mail.php" method="post" class="mt-4">
+            <form action="../App/test_mail.php" method="post" class="mt-4">
             <div class="mb-3">
                 <div><?php $errs ?></div>
                 <label for="pseudo" class="form-label">Pseudo</label>
@@ -26,6 +26,6 @@
         </div>
     </div>
 
-<?php require('footer.php'); ?>
+<?php require('../Views/footer.php'); ?>
 
 <?php unset($_SESSION['recuperation']) ?>

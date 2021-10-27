@@ -1,4 +1,4 @@
-<?php require('header.php'); ?>
+<?php require('../Views/header.php'); ?>
 
 <h1>Bienvenue !</h1>
 <p>Connectez-vous pour accéder au dashboard.</p>
@@ -319,4 +319,4 @@
         
        </table>
 
-<?php require('footer.php'); ?>
+<?php require('../Views/footer.php'); ?>

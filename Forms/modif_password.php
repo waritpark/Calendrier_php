@@ -1,9 +1,9 @@
 <?php session_start();
     if(empty($_SESSION['mail_change'])){
-        header('location:accueil.php');
+        header('location:index.php');
     } ?>
-<?php require('bdd.php'); ?>
-<?php require('header.php'); ?>
+<?php require('../App/bdd.php'); ?>
+<?php require('../Views/header.php'); ?>
 
     <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -14,7 +14,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Modification du mot de passe</legendfield>
-            <form action="password_change.php" method="post" class="mt-4">
+            <form action="../App/password_change.php" method="post" class="mt-4">
             <div class="mb-3">
                 <input type="mail" disabled hidden class="form-control" id="mail" name="mail" value="<?php $_GET['mail'] ?>">
             </div>
@@ -37,6 +37,6 @@
         </div>
     </div>
 
-<?php require('footer.php'); ?>
+<?php require('../Views/footer.php'); ?>
 
 <?php unset($_SESSION['recuperation']) ?>

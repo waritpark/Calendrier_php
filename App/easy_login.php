@@ -18,24 +18,24 @@ if(isset($_POST['mail'])
                 $_SESSION['metier']=$resultrow['metier'];
                 $_SESSION['pseudo']=$resultrow['pseudo'];
                 $_SESSION['role']=$resultrow['role_id'];
-                header('Location:dashboard.php');
+                header('Location:../Views/dashboard.php');
             }
             else {
-                header('Location:connexion.php');
+                header('Location:../Forms/connexion.php');
                 session_destroy();
             }
         }
         else {
-            header('Location:connexion.php');
+            header('Location:../Forms/connexion.php');
 
         }
     }
     else {
-        header('Location:connexion.php');
+        header('Location:../Forms/connexion.php');
     }
 }
 else {
-    header('Location:connexion.php');
+    header('Location:../Forms/connexion.php');
 }
 
 

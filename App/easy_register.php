@@ -41,7 +41,7 @@ if (isset($_POST["mail"])
                 "pseudo" => $pseudo,
                 "mdp" => $pass_hash
                 ));
-            header('Location: connexion.php');
+            header('Location: ../Forms/connexion.php');
         }
         catch(PDOException $e) {
             echo 'Erreur : '.$e->getMessage();

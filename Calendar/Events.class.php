@@ -51,10 +51,16 @@ class Events {
 
     /**
      * Récupère un événement
-     * @param int $id
-     * @return array
+     * @return Event
+     * @throws \Exception
      */
-    public function findInUrlId(int $id_event): array {
-        return $this->pdo->query('SELECT * FROM t_calendrier_events WHERE id_event = $id_event LIMIT 1')->fetch();
+    public function findInUrlId(): Event {
+        $statement = $this->pdo->query('SELECT * FROM t_calendrier_events WHERE id_event ='.$_GET['id_event'].' ');
+        $statement->setFetchMode(\PDO::FETCH_CLASS, Event::class);
+        $result = $statement->fetch();
+        if ($result === false) {
+            throw new \Exception('Aucun résultat n\'a était trouvé.');
+        }
+        return $result;
     }
 }

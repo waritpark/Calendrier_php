@@ -49,11 +49,11 @@ if(isset($_POST['pseudo'])
         }
         else{
             array_push($_SESSION['recuperation'],["","Un mail a été envoyé à votre adresse mail."]);
-            header("Location:recuperation.php");
+            header("Location:../Forms/recuperation.php");
         }
     }
     else {
         array_push($_SESSION['recuperation'],["Votre mail est incorrect.", ""]);
-        header("Location:recuperation.php");
+        header("Location:../Forms/recuperation.php");
     }
 }

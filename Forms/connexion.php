@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require('bdd.php'); ?>
-<?php require('header.php'); ?>
+<?php require('../App/bdd.php'); ?>
+<?php require('../Views/header.php'); ?>
 
     <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -16,7 +16,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Connexion</legendfield>
-            <form action="real_login.php" method="post" class="mt-4">
+            <form action="../App/real_login.php" method="post" class="mt-4">
             <div class="mb-3">
                 <label for="mail" class="form-label">Adresse mail</label>
                 <input type="mail" class="form-control" id="mail" name="mail">
@@ -33,7 +33,7 @@
         </div>
     </div>
 
-<?php require('footer.php'); ?>
+<?php require('../Views/footer.php'); ?>
 
 <?php unset($_SESSION['changermdp']) ?>
 <?php unset($_SESSION['connexion']) ?>

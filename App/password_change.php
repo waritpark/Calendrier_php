@@ -23,10 +23,10 @@ if(isset($_POST['token'])
         $req2->execute([$newMdp]);
 
         array_push($_SESSION['changermdp'],["", "Vous avez changé de mot de passe !"]);
-        header("Location:connexion.php");
+        header("Location:../Forms/connexion.php");
     } else {
         array_push($_SESSION['changermdp'],["Mauvais token !", ""]);
-        header("Location:connexion.php");
+        header("Location:../Forms/connexion.php");
 
     }
 }

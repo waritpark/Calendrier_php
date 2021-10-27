@@ -1,6 +1,6 @@
 <?php session_start(); ?>
-<?php require('bdd.php'); ?>
-<?php require('header.php'); ?>
+<?php require('../App/bdd.php'); ?>
+<?php require('../Views/header.php'); ?>
 
 
 
@@ -13,7 +13,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Inscription</legendfield>
-            <form action="easy_register.php" method="post" class="mt-4">
+            <form action="../App/easy_register.php" method="post" class="mt-4">
             <div class="mb-3">
                 <label for="mail" class="form-label">Adresse mail</label>
                 <input type="email" class="form-control" id="mail" name="mail" aria-describedby="emailHelp">
@@ -45,6 +45,6 @@
         </div>
     </div>
 
-<?php require('footer.php'); ?>
+<?php require('../Views/footer.php'); ?>
 
 <?php unset($_SESSION['inscription']) ?>
