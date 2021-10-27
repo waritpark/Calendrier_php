@@ -13,8 +13,8 @@ class Validator {
      * @return array!bool
      */
     public function validates(array $data) {
-        $this->data=$data;
         $this->errors = [];
+        $this->data=$data;
     }
 
     public function validate(string $field, string $method, ...$parameters) {
@@ -32,21 +32,21 @@ class Validator {
     }
 
     public function date(string $field) {
-        if(\DateTime ::createFromFormat('Y-m-d', $this->data[$field]) === false) {
+        if(\DateTime::createFromFormat('Y-m-d', $this->data[$field]) === false) {
             $this->errors[$field]= "La date n'est pas valide.";
         }
     }
 
     public function time(string $field) {
-        if(\DateTime ::createFromFormat('H:j', $this->data[$field]) === false) {
+        if(\DateTime::createFromFormat('H:j', $this->data[$field]) === false) {
             $this->errors[$field]= "Le temps n'est pas valide.";
         }
     }
 
     public function beforeTime(string $startField, string $endField) {
         if ($this->time($startField) && $this->time($endField)) {
-            $start = \DateTime ::createFromFormat('Y-m-d', $this->data[$startField]);
-            $end = \DateTime ::createFromFormat('Y-m-d', $this->data[$endField]);
+            $start = \DateTime::createFromFormat('Y-m-d', $this->data[$startField]);
+            $end = \DateTime::createFromFormat('Y-m-d', $this->data[$endField]);
             if ($start->getTimestamp() > $end->getTimestamp()) {
                 $this->error[$startField]= "Le début de l'événement doit être avant la fin de cet événement.";
                 return false;

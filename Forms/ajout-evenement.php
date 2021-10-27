@@ -13,7 +13,7 @@ if($_SESSION['pseudo']=="") {
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $validator = new Calendrier\ValidatorEvent();
     $errors=$validator->validates($_POST);
-    if (empty($errors)) {
+    if (isset($errors)) {
         debug($errors);
     }
 }
