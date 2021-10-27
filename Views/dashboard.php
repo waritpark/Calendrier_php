@@ -73,7 +73,7 @@ $events = $events->getEventsBetweenByDay($start, $end);
                 </tr>
             <?php } ?>
         </table>
-        <a class="ajout-event ajout-event-<?= $month->toStringMonth() ?> d-block position-absolute" href="ajout-evenement.php">
+        <a class="ajout-event ajout-event-<?= $month->toStringMonth() ?> d-block position-absolute" href="../Forms/ajout-evenement.php">
             <div class="position-relative img-ajout-event1"></div>
             <div class="position-relative img-ajout-event2"></div>
         </a>

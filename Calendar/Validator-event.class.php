@@ -2,12 +2,11 @@
 
 namespace Calendrier;
 
-use Validator;
+include '../App/Validator.class.php';
+
+use App\Validator;
 
 class ValidatorEvent extends Validator {
-
-    private $data;
-    private $errors;
 
 
     /**
@@ -16,7 +15,9 @@ class ValidatorEvent extends Validator {
      */
     public function validates(array $data) {
         parent::validates($data);
-        $this->validate('name', 'minLenght', 30);
+        $this->validate('name', 'minLength', 5);
+        $this->validate('date', 'date');
+        $this->validate('start', 'beforeTime', 'end');
         return $this->errors;
     }
 
