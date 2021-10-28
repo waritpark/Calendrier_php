@@ -27,7 +27,17 @@ class Event {
         return new DateTime($this->end_event);
     }
 
-
-
+    public function setName(string $nom_event) {
+        $this->nom_event=$nom_event;
+    }
+    public function setDesc(string $desc_event) {
+        $this->desc_event=$desc_event;
+    }
+    public function setStart(string $start_event) {
+        $this->start_event=$start_event;
+    }
+    public function setEnd(string $end_event) {
+        $this->end_event=$end_event;
+    }
 
 }

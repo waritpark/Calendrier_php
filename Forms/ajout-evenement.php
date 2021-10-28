@@ -1,54 +1,66 @@
 <?php
+require '../App/bdd.php';
 require '../Public/utility.php';
+require '../Calendar/Event.class.php';
+require '../Calendar/Events.class.php';
 require '../Calendar/Validator-event.class.php';
 session_start();
 if($_SESSION['pseudo']=="") {
     header('location:../Forms/connexion.php');
 }
 ?>
-
-<?php require '../Views/header.php'; ?>
-
 <?php 
-if($_SERVER['REQUEST_METHOD'] == 'POST') {
+$data = [];
+if($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = $_POST;
     $validator = new Calendrier\ValidatorEvent();
     $errors=$validator->validates($_POST);
-    if (isset($errors)) {
-        debug($errors);
+    if (empty($errors)) {
+        $event = new \Calendrier\Event();
+        $event->setName($data['nom']);
+        $event->setDesc($data['desc']);
+        $event->setStart(DateTime::createFromFormat('Y-m-d H:i', $data['date']. ' ' .$data['start'])->format('Y-m-d H:i:s'));
+        $event->setEnd(DateTime::createFromFormat('Y-m-d H:i', $data['date']. ' ' . $data['end'])->format('Y-m-d H:i:s'));
+        debug($event);
+        $events = new \Calendrier\Events(get_pdo());
+        $events->create($event);
+        header('Location:../Views/dashboard.php?success=1');
+        exit();
     }
 }
 ?>
+<?php require '../Views/header.php'; ?>
 
 <legendfield class="h2">Ajout d'un nouvel événement</legendfield>
 <form action="#" method="post" class="mt-4 form-ajout-event">
     <div class="mb-3">
-        <label for="name" class="form-label">Nom</label>
-        <input type="text" class="form-control" id="name" name="name" value="TestValue">
-        <?php if (isset($errors['name'])): ?>
-        <p class="alert alert-danger"><?= $errors['name']; ?></p>
+        <label for="nom" class="form-label">Nom</label>
+        <input type="text" class="form-control" id="nom" name="nom" value="<?= isset($data['nom']) ? h($data['nom']) : ''; ?>">
+        <?php if (isset($errors['nom'])): ?>
+        <p class="alert alert-danger"><?= $errors['nom']; ?></p>
         <?php endif;?>
     </div>
     <div class="mb-3">
         <label for="desc" class="form-label">Description</label>
-        <textarea type="text" class="form-control" name="desc" id="desc"></textarea>
+        <textarea type="text" class="form-control" name="desc" id="desc"><?= isset($data['desc']) ? h($data['desc']) : ''; ?></textarea>
     </div>
     <div class="mb-3">
         <label for="date" class="form-label">Date</label>
-        <input type="date" class="form-control" name="date" id="date" value ="2021-10-10">
+        <input type="date" class="form-control" name="date" id="date" value ="<?= isset($data['date']) ? h($data['date']) : ''; ?>">
         <?php if (isset($errors['date'])): ?>
         <p class="alert alert-danger"><?= $errors['date']; ?></p>
         <?php endif;?>
     </div>
     <div class="mb-3">
         <label for="start" class="form-label">Début de l'événement</label>
-        <input type="time" class="form-control" name="start" id="start" placeholder="HH:MM" value="10:00">
-        <?php if (isset($errors['time']) || isset($errors['beforeTime'])): ?>
-        <p class="alert alert-danger"><?= $errors['time']; ?><?= $errors['beforeTime']; ?></p>
+        <input type="time" class="form-control" name="start" id="start" value="<?= isset($data['start']) ? h($data['start']) : ''; ?>">
+        <?php if (isset($errors['start'])): ?>
+        <p class="alert alert-danger"><?= $errors['start']; ?></p>
         <?php endif;?>
     </div>
     <div class="mb-3">
         <label for="end" class="form-label">fin de l'événement</label>
-        <input type="time" class="form-control" name="end" id="end" placeholder="HH:MM" value="12:00">
+        <input type="time" class="form-control" name="end" id="end" value="<?= isset($data['end']) ? h($data['end']) : ''; ?>">
         <?php if (isset($errors['time'])): ?>
         <p class="alert alert-danger"><?= $errors['time']; ?></p>
         <?php endif;?>

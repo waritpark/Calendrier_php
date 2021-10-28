@@ -63,4 +63,17 @@ class Events {
         }
         return $result;
     }
+
+    /**
+     * Créer un evement
+     */
+    public function create(Event $event) {
+        $statement = $this->pdo->prepare('INSERT INTO t_calendrier_events (nom_event, desc_event, start_event, end_event) VALUES (?, ?, ?, ?) ');
+        return $statement->execute([
+            $event->getName(),
+            $event->getDesc(),
+            $event->getStart()->format('Y-m-d H:i:s'),
+            $event->getEnd()->format('Y-m-d H:i:s'),
+        ]);
+    }
 }

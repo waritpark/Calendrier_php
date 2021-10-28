@@ -3,7 +3,7 @@
     <footer class="container-fluid bg-secondary">
         <div class="container height-100">
             <div class="d-flex justify-content-around h-100 text-white font-family-roboto align-items-center">
-                <p class="m-0">Projet réalisé</p>
+                <p class="m-0">Projet Calendrier</p>
                 <p class="m-0">Arthur <span class="text-uppercase text-blue"> Lafarge</span></p>
                 <p class="m-0">© 2021</p>
             </div>

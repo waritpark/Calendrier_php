@@ -114,6 +114,9 @@ td:hover {
 .w-800 {
     width: 800px;
 }
+.w-max-content {
+    width: max-content;
+}
 .vh-80 {
     height: 80vh;
 }

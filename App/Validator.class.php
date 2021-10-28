@@ -26,32 +26,40 @@ class Validator {
     }
 
     public function minLength(string $field, int $length) {
-        if(strlen($field) < $length) {
+        if(strlen($this->data[$field]) < $length) {
             $this->errors[$field] = "Le champ doit avoir plus de $length caractères.";
+            return false;
         }
+        return true;
     }
 
     public function date(string $field) {
         if(\DateTime::createFromFormat('Y-m-d', $this->data[$field]) === false) {
             $this->errors[$field]= "La date n'est pas valide.";
+            return false;
         }
+        return true;
     }
 
     public function time(string $field) {
-        if(\DateTime::createFromFormat('H:j', $this->data[$field]) === false) {
+        if(\DateTime::createFromFormat('H:i', $this->data[$field]) === false) {
             $this->errors[$field]= "Le temps n'est pas valide.";
+            return false;
         }
+        return true;
     }
 
     public function beforeTime(string $startField, string $endField) {
         if ($this->time($startField) && $this->time($endField)) {
-            $start = \DateTime::createFromFormat('Y-m-d', $this->data[$startField]);
-            $end = \DateTime::createFromFormat('Y-m-d', $this->data[$endField]);
+            $start = \DateTime::createFromFormat('H:i', $this->data[$startField]);
+            $end = \DateTime::createFromFormat('H:i', $this->data[$endField]);
             if ($start->getTimestamp() > $end->getTimestamp()) {
-                $this->error[$startField]= "Le début de l'événement doit être avant la fin de cet événement.";
+                $this->errors[$startField]= "Le début d'un événement doit être avant la fin de ce même événement.";
                 return false;
             }
-            return true;
+            else {
+                return true;
+            }
         }
         return false;
     }

@@ -40,7 +40,29 @@ $events = $events->getEventsBetweenByDay($start, $end);
                     </span>
                 </a>
         </div>  
-
+        <?php  if (isset($_GET['success'])): ?>
+            <div class="modal d-block" id="modal-success-event">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Information :</h5>
+                            <button onclick="removeSuccess();" type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Votre événement a été sauvegardé !</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="removeSuccess();" type="button" class="btn btn-prev-<?= $month->toStringMonth() ?>">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif ?>
+        <script>
+            function removeSuccess() {
+                document.getElementById("modal-success-event").classList.remove("d-block");
+            }
+        </script>
         <table class="table table-bordered" id="calendar-table">
             <tr>
             <?php foreach($month->days as $s): ?>
