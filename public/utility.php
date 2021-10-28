@@ -13,6 +13,11 @@ function debug(...$vars) {
     }
 }
 
+function render(string $view, $parameters = []) {
+    extract($parameters);
+    require ''.$view.'';
+}
+
 function h(?string $value): string {
     if ($value == null) {
         return '';

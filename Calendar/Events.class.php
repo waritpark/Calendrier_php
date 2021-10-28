@@ -22,12 +22,23 @@ class Events {
      * @return array
      */
     public function getEventsBetween (\DateTimeInterface $start,\DateTimeInterface $end): array {
-        $req = "SELECT * FROM t_calendrier_events WHERE start_event BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}'";
+        $req = "SELECT * FROM t_calendrier_events WHERE start_event BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}' ORDER BY start_event ASC";
         $result = $this->pdo->query($req);
         $resulthrow = $result->fetchAll();
         return $resulthrow;
     }
 
+    /**
+     * Récupère les evenements d'un jour
+     * @param \DateTimeInterface $date
+     * @return array
+     */
+    public function getEvents (\DateTimeInterface $date) {
+        $req = "SELECT * FROM t_calendrier_events WHERE start_event BETWEEN '{$date->format('Y-m-d 00:00:00')}' AND '{$date->format('Y-m-d 23:59:59')}' ORDER BY start_event ASC";
+        $result = $this->pdo->query($req);
+        $resulthrow = $result->fetchAll();
+        return $resulthrow;
+    }
 
     /**
      * Récupère les evenements commencant entre 2 dates indexé par jour
@@ -50,7 +61,7 @@ class Events {
     }
 
     /**
-     * Récupère un événement
+     * Récupère un événement avec une id dans une url
      * @return Event
      * @throws \Exception
      */
@@ -59,13 +70,13 @@ class Events {
         $statement->setFetchMode(\PDO::FETCH_CLASS, Event::class);
         $result = $statement->fetch();
         if ($result === false) {
-            throw new \Exception('Aucun résultat n\'a était trouvé.');
+            throw new \Exception('Aucun résultat n\'a été trouvé.');
         }
         return $result;
     }
 
     /**
-     * Créer un evement
+     * Créer un evement dans la bdd
      */
     public function create(Event $event) {
         $statement = $this->pdo->prepare('INSERT INTO t_calendrier_events (nom_event, desc_event, start_event, end_event) VALUES (?, ?, ?, ?) ');
@@ -76,4 +87,20 @@ class Events {
             $event->getEnd()->format('Y-m-d H:i:s'),
         ]);
     }
+
+    /**
+     * Modifie un événement de la bdd
+     */
+    public function update(Event $event): bool {
+        $statement = $this->pdo->prepare('UPDATE t_calendrier_events SET nom_event=?, desc_event=?, start_event=?, end_event=? WHERE id_event = ?');
+        return $statement->execute([
+            $event->getName(),
+            $event->getDesc(),
+            $event->getStart()->format('Y-m-d H:i:s'),
+            $event->getEnd()->format('Y-m-d H:i:s'),
+            $event->getId()
+        ]);
+    }
+
+
 }

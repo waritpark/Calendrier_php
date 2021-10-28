@@ -4,6 +4,7 @@
         header('location:../Forms/connexion.php');
     }
 ?> 
+
 <?php  
 require '../App/bdd.php';
 require '../Calendar/Month.class.php';
@@ -40,6 +41,7 @@ $events = $events->getEventsBetweenByDay($start, $end);
                     </span>
                 </a>
         </div>  
+        <!-- modal de sauvegarde success -->
         <?php  if (isset($_GET['success'])): ?>
             <div class="modal d-block" id="modal-success-event">
                 <div class="modal-dialog">
@@ -58,11 +60,25 @@ $events = $events->getEventsBetweenByDay($start, $end);
                 </div>
             </div>
         <?php endif ?>
-        <script>
-            function removeSuccess() {
-                document.getElementById("modal-success-event").classList.remove("d-block");
-            }
-        </script>
+        <!-- modal de modification success -->
+        <?php  if (isset($_GET['modification'])): ?>
+            <div class="modal d-block" id="modal-success-event">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Information :</h5>
+                            <button onclick="removeSuccess();" type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Votre événement a été modifié !</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="removeSuccess();" type="button" class="btn btn-prev-<?= $month->toStringMonth() ?>">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif ?>
         <table class="table table-bordered" id="calendar-table">
             <tr>
             <?php foreach($month->days as $s): ?>
@@ -74,28 +90,24 @@ $events = $events->getEventsBetweenByDay($start, $end);
                 <?php 
                 foreach($month->days as $k => $day): 
                     $date=$start->modify("+" . ($k + $i * 7). "days"); 
-                    ?>
-                    <td class="w-14 align-top td-month-<?= $month->toStringMonth() ?> <?= $month->withinMonth($date) ? '' : 'bg-second'; ?>">
-                    <?php 
-                    $eventsForDay = $events[$date->format('Y-m-d')] ?? [];
-                    foreach($eventsForDay as $event): ?>
-                        <a class="text-decoration-none text-black calendar-event <?= $month->withinMonth($date) ? '' : 'bg-second'; ?>" href="event.php?id_event=<?= $event['id_event'];?>">
-                        <?php endforeach; ?>
+                    $isToday = date('Y-m-d') === $date->format('Y-m-d'); ?>
+                    <td class="w-14 align-top position-relative td-month-<?= $month->toStringMonth() ?> <?= $month->withinMonth($date) ? '' : 'bg-second'; ?><?= $isToday ? 'ajout-event-'.$month->toStringMonth().'' : ''; ?>">
+                        <a class="position-absolute h-100 w-100 top-0 right-0" href="day-evenement.php?date=<?= $date->format('Y-m-d');?>"></a>
+                    <?php $eventsForDay = $events[$date->format('Y-m-d')] ?? []; ?>
                         <div class="fs-5"><?= $date->format('d');?></div>
-                            <?php 
-                            foreach($eventsForDay as $event): ?>
-                                <div class="container-calendar-event d-flex align-items-center fs-6">
-                                    <div><?= (new DateTimeImmutable($event['start_event']))->format('H:i'); ?>&nbsp;-&nbsp;</div>
-                                    <div class="calendar-event" href="event.php?id=<?= $event['id_event'];?>"><?= $event['nom_event']; ?></div>
-                                </div>
-                            <?php endforeach; ?>
-                        </a>
+                        <?php foreach($eventsForDay as $event): ?>
+                            <div class="container-calendar-event d-flex align-items-center fs-6">
+                                <div><?= (new DateTimeImmutable($event['start_event']))->format('H:i'); ?>&nbsp;-&nbsp;</div>
+                                <!-- <a class="text-black" href="edit-evenement.php?id_event=<?php //echo $event['id_event'];?>"><?php //echo $event['nom_event']; ?></a> -->
+                                <div><?php echo $event['nom_event'];?></div>
+                            </div>
+                        <?php endforeach; ?>
                     </td>
-                <?php endforeach; ?>
-                </tr>
-            <?php } ?>
+                    <?php endforeach; ?>
+                    </tr>
+                <?php } ?>
         </table>
-        <a class="ajout-event ajout-event-<?= $month->toStringMonth() ?> d-block position-absolute" href="../Forms/ajout-evenement.php">
+        <a class="ajout-event ajout-event-<?= $month->toStringMonth() ?> d-block position-absolute" href="../Views/ajout-evenement.php">
             <div class="position-relative img-ajout-event1"></div>
             <div class="position-relative img-ajout-event2"></div>
         </a>

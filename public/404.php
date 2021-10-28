@@ -7,5 +7,4 @@
 <div>Une erreur c'est produite.</div>
 
 
-    </div>
 <?php include('../Views/footer.php'); ?>

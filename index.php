@@ -1,4 +1,6 @@
-<?php require('../Views/header.php'); ?>
+<?php require('Views/header.php'); ?>
+<?php ini_set('display_errors','off'); ?>
+
 
 <h1>Bienvenue !</h1>
 <p>Connectez-vous pour accéder au dashboard.</p>
@@ -319,4 +321,4 @@
         
        </table>
 
-<?php require('../Views/footer.php'); ?>
+<?php require('Views/footer.php'); ?>

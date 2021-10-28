@@ -1,6 +1,6 @@
 <?php session_start();
     if(empty($_SESSION['mail_change'])){
-        header('location:index.php');
+        header('location:../index.php');
     } ?>
 <?php require('../App/bdd.php'); ?>
 <?php require('../Views/header.php'); ?>

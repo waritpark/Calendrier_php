@@ -62,44 +62,47 @@ td:hover {
 }
 
 /* Couleur pour chaque mois */
+
 .td-month-Janvier:hover, .btn-prev-Janvier , .btn-next-Janvier, .ajout-event-Janvier{
-    background-color:rgb(255, 193, 158);
+    background-color:rgb(255, 193, 158)!important;
 }
 .td-month-Février:hover, .btn-prev-Février , .btn-next-Février, .ajout-event-Février{
-    background-color:rgb(255, 158, 158);
+    background-color:rgb(255, 158, 158)!important;
 }
 .td-month-Mars:hover, .btn-prev-Mars , .btn-next-Mars, .ajout-event-Mars{
-    background-color:rgb(222, 255, 191);
+    background-color:rgb(222, 255, 191)!important;
 }
 .td-month-Avril:hover, .btn-prev-Avril , .btn-next-Avril, .ajout-event-Avril{
-    background-color:rgb(198, 255, 236);
+    background-color:rgb(198, 255, 236)!important;
 }
 .td-month-Mai:hover, .btn-prev-Mai , .btn-next-Mai, .ajout-event-Mai{
-    background-color:rgb(190, 250, 255);
+    background-color:rgb(190, 250, 255)!important;
 }
 .td-month-Juin:hover, .btn-prev-Juin , .btn-next-Juin, .ajout-event-Juin{
-    background-color:rgb(200, 215, 255);
+    background-color:rgb(200, 215, 255)!important;
 }
 .td-month-Juillet:hover, .btn-prev-Juillet , .btn-next-Juillet, .ajout-event-Juillet{
-    background-color:rgb(233, 199, 255);
+    background-color:rgb(233, 199, 255)!important;
 }
 .td-month-Aout:hover, .btn-prev-Aout , .btn-next-Aout, .ajout-event-Aout{
-    background-color:rgb(255, 205, 251);
+    background-color:rgb(255, 205, 251)!important;
 }
 .td-month-Septembre:hover, .btn-prev-Septembre , .btn-next-Septembre, .ajout-event-Septembre{
-    background-color:rgb(255, 203, 225);
+    background-color:rgb(255, 203, 225)!important;
 }
 .td-month-Octobre:hover, .btn-prev-Octobre , .btn-next-Octobre, .ajout-event-Octobre{
-    background-color:rgb(255, 187, 187);
+    background-color:rgb(255, 187, 187)!important;
 }
 .td-month-Novembre:hover, .btn-prev-Novembre , .btn-next-Novembre, .ajout-event-Novembre{
-    background-color:rgb(197, 227, 255);
+    background-color:rgb(197, 227, 255)!important;
 }
 .td-month-Décembre:hover, .btn-prev-Décembre , .btn-next-Décembre, .ajout-event-Décembre{
-    background-color:rgb(211, 228, 185);
+    background-color:rgb(211, 228, 185)!important;
 }
-
 .bg-second {
+    background-color: rgb(200, 200, 200)!important;
+}
+.bg-second:hover {
     background-color: rgb(200, 200, 200)!important;
 }
 .btn:focus {
@@ -120,11 +123,21 @@ td:hover {
 .vh-80 {
     height: 80vh;
 }
+.right-0 {
+    right: 0;
+}
 #calendar-table {
     min-height: 500px;
 }
 #calendar-table td {
     height: 130px;
+}
+.container-calendar-event a {
+    z-index: 2;
+}
+.container-calendar-event a:hover {
+    transition: 0.3s ease-in-out;
+
 }
 .text-second {
     color: rgb(197, 197, 197);

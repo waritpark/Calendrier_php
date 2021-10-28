@@ -2,6 +2,6 @@
     session_start();
     session_unset();
     session_destroy();
-    header("Location:../Public/index.php");
+    header("Location:http://localhost/base-learn/");
     exit();
 ?>
