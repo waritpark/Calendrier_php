@@ -16,7 +16,7 @@
             <?php }
             }; ?>
             <legendfield class="h2">Connexion</legendfield>
-            <form action="../App/real_login.php" method="post" class="mt-4">
+            <form action="../App/easy_login.php" method="post" class="mt-4">
             <div class="mb-3">
                 <label for="mail" class="form-label">Adresse mail</label>
                 <input type="mail" class="form-control" id="mail" name="mail">

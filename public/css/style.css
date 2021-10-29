@@ -12,3 +12,8 @@
 .right-70 {
     right: 70px;
 }
+
+/* table stats */
+#table-stats th {
+    width:16.6%;
+}

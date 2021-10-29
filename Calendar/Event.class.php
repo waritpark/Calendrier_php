@@ -10,6 +10,7 @@ class Event {
     private $desc_event;
     private $start_event;
     private $end_event;
+    private $id_utilisateur;
 
     public function getId(): int {
         return $this->id_event;
@@ -26,6 +27,9 @@ class Event {
     public function getEnd(): DateTime {
         return new DateTime($this->end_event);
     }
+    public function getIdUser() {
+        return $this->id_utilisateur;
+    }
 
     public function setName(string $nom_event) {
         $this->nom_event=$nom_event;
@@ -38,6 +42,9 @@ class Event {
     }
     public function setEnd(string $end_event) {
         $this->end_event=$end_event;
+    }
+    public function setIdUser(string $id_utilisateur) {
+        $this->id_utilisateur=$id_utilisateur;
     }
 
 }

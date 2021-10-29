@@ -1,6 +1,6 @@
 <?php
     session_start();
-    if($_SESSION['pseudo']=="") {
+    if($_SESSION['id_utilisateur']=="") {
         header('location:../Forms/connexion.php');
     }
 ?> 
@@ -20,25 +20,14 @@ $events = $events->getEventsBetweenByDay($start, $end);
 ?>
 <?php require '../Views/header.php'; ?>
 
-        <?php //if($_SESSION['role']== 2):  ?>
-        <?php //echo 'Bonjour ' .$_SESSION['pseudo'].'. Vous êtes un utilisateur.'; ?> <br>
-
-
-        <?php //elseif($_SESSION['role']== 1): ?>
-        <?php //echo 'Bonjour ' .$_SESSION['pseudo'].'. Vous êtes un admin.'; ?> <br>
-
-
+        <?php if($_SESSION['role']== 2 || $_SESSION['role']== 1):  ?>
         <div class="mb-5 d-flex align-items-center justify-content-center">
-                <a class="btn btn-nav text-white btn-next-<?= $month->toStringMonth() ?>" href="dashboard.php?month=<?=$month->previousMonth()->month;?>&year=<?=$month->previousMonth()->year;?>">
-                    <div class="position-relative arrow-left"></div>
-                    <div class="position-relative arrow-right"></div>
+                <a class="arrow-rotate180" href="dashboard.php?month=<?=$month->previousMonth()->month;?>&year=<?=$month->previousMonth()->year;?>">
+                    <img src="../Public/imgs/arrow.png" class="arrow-btn">
                 </a>
                 <h1 class="mx-5 w-300 d-flex justify-content-center"><?php echo $month->toString(); ?></h1>
-                <a class="btn btn-nav position-relative text-white btn-prev-<?= $month->toStringMonth() ?>" href="dashboard.php?month=<?=$month->nextMonth()->month;?>&year=<?=$month->nextMonth()->year;?>">
-                    <span class="position-absolute arrow-rotate180">
-                        <div class="position-relative arrow-left"></div>    
-                        <div class="position-relative arrow-right"></div>
-                    </span>
+                <a class="" href="dashboard.php?month=<?=$month->nextMonth()->month;?>&year=<?=$month->nextMonth()->year;?>">
+                    <img src="../Public/imgs/arrow.png" class="arrow-btn">
                 </a>
         </div>  
         <!-- modal de sauvegarde success -->
@@ -79,6 +68,25 @@ $events = $events->getEventsBetweenByDay($start, $end);
                 </div>
             </div>
         <?php endif ?>
+        <!-- modal d'edit de compte success -->
+        <?php  if (isset($_GET['edit'])): ?>
+            <div class="modal d-block" id="modal-success-event">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Information :</h5>
+                            <button onclick="removeSuccess();" type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>Les informations de votre compte ont été sauvegardé !</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button onclick="removeSuccess();" type="button" class="btn btn-prev-<?= $month->toStringMonth() ?>">Fermer</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif ?>
         <table class="table table-bordered" id="calendar-table">
             <tr>
             <?php foreach($month->days as $s): ?>
@@ -98,7 +106,6 @@ $events = $events->getEventsBetweenByDay($start, $end);
                         <?php foreach($eventsForDay as $event): ?>
                             <div class="container-calendar-event d-flex align-items-center fs-6">
                                 <div><?= (new DateTimeImmutable($event['start_event']))->format('H:i'); ?>&nbsp;-&nbsp;</div>
-                                <!-- <a class="text-black" href="edit-evenement.php?id_event=<?php //echo $event['id_event'];?>"><?php //echo $event['nom_event']; ?></a> -->
                                 <div><?php echo $event['nom_event'];?></div>
                             </div>
                         <?php endforeach; ?>
@@ -107,15 +114,10 @@ $events = $events->getEventsBetweenByDay($start, $end);
                     </tr>
                 <?php } ?>
         </table>
-        <a class="ajout-event ajout-event-<?= $month->toStringMonth() ?> d-block position-absolute" href="../Views/ajout-evenement.php">
+        <!-- <a class="ajout-event ajout-event-<?php //$month->toStringMonth() ?> d-block position-absolute" href="../Views/ajout-evenement.php">
             <div class="position-relative img-ajout-event1"></div>
             <div class="position-relative img-ajout-event2"></div>
-        </a>
-
-        <?php //else: ?>
-        <?php //echo 'Erreur inconnue.'; ?> <br>
-        <?php //echo var_dump($_SESSION['role']); ?>
-        <?php //endif;  ?>
-
+        </a> -->
+        <?php endif; ?>
 
 <?php include '../Views/footer.php'; ?>

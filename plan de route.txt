@@ -1,11 +1,11 @@
 
 
-            - - - Dashboard avec plusieurs type de role - - - 
+            - - - Inscription / Connexion - - - 
 
 Fonctionnalités :
 
 - Connexion :
-    Utilisation de session pour reveler les erreurs en PHP.
+    Utilisation de sessions pour reveler les erreurs en PHP et identifier la personne qui se connecte.
     Modification de mot de passe par mail :
         1 - Saisir le nom et adresse mail pour recevoir un mail.
         2 - Recevoir le mail avec un lien qui possède un token + mail de la personne pour modifier le mot de passe.
@@ -30,7 +30,6 @@ Fonctionnalités :
 - pseudo
 - nom
 - prenom
-- niveau scolaire
 - mot de passe
 - répéter le mot de passe
 
@@ -38,7 +37,7 @@ Fonctionnalités :
 
 Prépare les requêtes SQL.
 
-- Aucun attributs html, tout est géré en php.
+- Aucun attributs html, toutes les erreurs sont gérées en php.
 
 - Fonctions PHP :
     - Traite les données avant la requête :
@@ -51,7 +50,7 @@ Prépare les requêtes SQL.
         empty()
         strlen()
 
-    - Hache le mot de passe :
+    - Hacher le mot de passe :
         password_hash()
 
     - Vérifie la conformité de l'adresse mail :
@@ -66,7 +65,7 @@ Prépare les requêtes SQL.
 
 Prépare les requêtes SQL.
 
-- Aucun attributs html, tout est géré en php.
+- Aucun attributs html, toutes les erreurs sont gérées en php.
 
 !!! Manque actuellement les erreurs relevés avec PHP !!!
 !!! La récupération de mot de passe par mail n'est pas terminé !!!
@@ -81,8 +80,14 @@ Prépare les requêtes SQL.
         password_verify()
 
 
----------- Dashboard utilisateur : ----------
+---------- Calendrier : ----------
 
+--- fonctionnalités : ---
 
-
+--- le menu : ---
+- Page 'Mon Calendrier' -> Affiche le mois en cours par semaine (avec les jours grisés s'ils ne font pas parti du mois actuel et le jour actuel d'une autre couleur).
+- Affiche le jour avec tous les événements dans un tableau -> modifier / supprimer / ajouter(le champs 'Date' prend la valeur de la journée actuelle).
+- Page 'Nouvel événement' -> Affiche un formulaire pour créer un événement.
+- Page 'Mon compte' -> permet de modifier les Informations de son compte.
+- ADMIN - Page 'statistique' -> Affiche tous les utiliseurs avec leurs informations dans un tableau -> modifier / supprimer (sauf l'admin qui est défini par l'adresse mail).
 

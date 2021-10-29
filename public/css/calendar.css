@@ -1,5 +1,5 @@
 /* hover des td */
-td:hover {
+#calendar-table td:hover {
     transform: scale(1.2);
     border-radius: 10px;
     transition: 0.2s ease-in-out;
@@ -9,9 +9,9 @@ td:hover {
     height: 40px;
     width: 40px;
     border-radius: 10px;
-    box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 15px -1px #0003;
+    /* box-shadow: 0 6px 10px 0 #0000001a, 0 1px 18px 0 #0000001a, 0 3px 15px -1px #0003; */
 }
-.arrow-left {
+/* .arrow-left {
     top: 15px;
     transform: rotate(30deg);
     left: -3px;
@@ -20,17 +20,21 @@ td:hover {
     transform: rotate(-30deg);
     left: -3px;
     top: 4px;  
-}
-.arrow-left, .arrow-right {
+} */
+/* .arrow-left, .arrow-right {
     height: 3px;
     width: 18px;
     background-color: black;
     border-radius: 10px;
+} */
+.arrow-btn {
+    height: 40px;
+    width: 40px;
 }
 .arrow-rotate180 {
     transform: rotate(180deg);
-    top: 25px;
-    left: 8px;
+    /* top: 25px;
+    left: 8px; */
 }
 /* bouton d'ajout d'évenement */
 .ajout-event {
@@ -146,4 +150,34 @@ td:hover {
 /* formulaire d'ajout d'événement */
 .form-ajout-event {
     width: 500px;
+}
+
+
+/* week tableau */
+#week-table td {
+    height: 500px;
+}
+#week-table tbody tr td .btn-afficher {
+    bottom: 10px;
+    left: 14px;
+}
+.border-table-bottom {
+    border-bottom: 1px solid #dee2e6!important;
+}
+.border-table-top {
+    border-top: 1px solid #dee2e6!important;
+}
+.border-table-0 {
+    border-width: 0!important;
+}
+.border-color-1 {
+    border-color: #dee2e6!important;;
+}
+.number-day {
+    left: 15px;
+}
+.border-week-table {
+    height: 1px;
+    left: 0;
+    top: 40px;
 }

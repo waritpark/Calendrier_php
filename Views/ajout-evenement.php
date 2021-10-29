@@ -24,6 +24,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $event->setDesc($data['desc']);
         $event->setStart(DateTime::createFromFormat('Y-m-d H:i', $data['date']. ' ' .$data['start'])->format('Y-m-d H:i:s'));
         $event->setEnd(DateTime::createFromFormat('Y-m-d H:i', $data['date']. ' ' . $data['end'])->format('Y-m-d H:i:s'));
+        $event->setIdUser($_SESSION['id_utilisateur'],PDO::PARAM_INT);
         debug($event);
         $events = new \Calendrier\Events(get_pdo());
         $events->create($event);
