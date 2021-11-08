@@ -20,8 +20,4 @@ class ValidatorEvent extends Validator {
         $this->validate('start', 'beforeTime', 'end');
         return $this->errors;
     }
-
-
-
-
 }

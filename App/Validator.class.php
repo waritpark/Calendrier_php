@@ -22,6 +22,10 @@ class Validator {
     }
 
     public function validate(string $field, string $method, ...$parameters): bool {
+        $this->data[$field] = trim($this->data[$field]);
+        $this->data[$field] = stripslashes($this->data[$field]);
+        $this->data[$field] = htmlspecialchars($this->data[$field]);
+        return $this->data[$field];
         if(!isset($this->data[$field])) {
             $this->errors[$field]="Le champ $field n'est pas rempli.";
             return false;
@@ -33,6 +37,14 @@ class Validator {
     public function minLength(string $field, int $length) {
         if(strlen($this->data[$field]) < $length) {
             $this->errors[$field] = "Le champ doit avoir plus de $length caractères.";
+            return false;
+        }
+        return true;
+    }
+
+    public function maxLength(string $field, int $length2) {
+        if(strlen($this->data[$field]) > $length2) {
+            $this->errors[$field] = "Le champ doit avoir moins de $length2 caractères.";
             return false;
         }
         return true;
@@ -67,6 +79,27 @@ class Validator {
             }
         }
         return false;
+    }
+
+    public function formatMail(string $field) {
+        if(filter_var($this->data[$field], FILTER_VALIDATE_EMAIL)) {
+            $this->errors[$field] = "Le format de l'adresse mail n'est pas valide.";
+            return false;
+        }
+        return true;
+    }
+
+    public function egalMdp(string $field, string $mdp) {
+        if($this->data[$field] !== $mdp) {
+            $this->errors[$field] = "Les mots de passe ne sont pas identique.";
+            return false;
+        }
+        return true;
+    }
+
+    public function mdpHash(string $field) {
+        password_hash($this->data[$field], PASSWORD_DEFAULT);
+        return true;
     }
 
 }

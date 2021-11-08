@@ -86,8 +86,11 @@ Prépare les requêtes SQL.
 
 --- le menu : ---
 - Page 'Mon Calendrier' -> Affiche le mois en cours par semaine (avec les jours grisés s'ils ne font pas parti du mois actuel et le jour actuel d'une autre couleur).
-- Affiche le jour avec tous les événements dans un tableau -> modifier / supprimer / ajouter(le champs 'Date' prend la valeur de la journée actuelle).
+    Affiche le jour avec tous les événements dans un tableau -> modifier / supprimer / ajouter (le champs 'Date' prend la valeur de la journée actuelle).
+    Utilisation de fonction ternaire php pour le css du Dashboard. Ex : <?= $month->withinMonth($date) ? '' : 'bg-second'; ?>
+    Utilisation de variable php pour le css du Dashboard. Ex : td-month-<?= $month->toStringMonth() ?>
+
 - Page 'Nouvel événement' -> Affiche un formulaire pour créer un événement.
-- Page 'Mon compte' -> permet de modifier les Informations de son compte.
+- Page 'Mon compte' -> permet de modifier les informations de son compte.
 - ADMIN - Page 'statistique' -> Affiche tous les utiliseurs avec leurs informations dans un tableau -> modifier / supprimer (sauf l'admin qui est défini par l'adresse mail).
 

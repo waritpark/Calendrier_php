@@ -1,5 +1,5 @@
 <?php
-
+require('../vendor/autoload.php');
 function e404() {
     require '404.php';
     exit();

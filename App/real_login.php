@@ -14,7 +14,6 @@ if(isset($_POST['mail']) && isset($_POST['password']))  {
                 $resultrow=$result->fetch(PDO::FETCH_ASSOC);
                 if (password_verify($mdp, $resultrow['mdp'])) {
                     if($mail !="") {
-                        $_SESSION['metier']=$resultrow['metier'];
                         $_SESSION['pseudo']=$resultrow['pseudo'];
                         $_SESSION['role']=$resultrow['role_id'];
                         header('Location:../Views/dashboard.php');

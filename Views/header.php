@@ -12,7 +12,7 @@
 </head>
 <body>
     <header class="container-fluid py-3 bg-light">
-    <?php if($_SESSION['id_utilisateur']!="") { ?>
+    <?php if(isset($_SESSION['id_utilisateur'])) { ?>
         <nav class="position-relative">
             <ul class="nav flex-row align-items-center">
                 <a class="text-sm-center nav-link text-dark" href="../Views/dashboard.php"><h1 class="font-family-roboto"><li>base-learn</li></h1></a>

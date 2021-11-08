@@ -8,7 +8,6 @@ class Month {
     private $months = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Aout','Septembre','Octobre','Novembre','Décembre'];
     public $month;
     public $year;
-    public $week;
 
 
     /** Mon constructeur

@@ -23,9 +23,7 @@ class Events {
      */
     public function getEventsBetween (\DateTimeInterface $start,\DateTimeInterface $end): array {
         $req = "SELECT * FROM t_calendrier_events 
-        INNER JOIN t_utilisateur 
-        ON t_utilisateur.ID_utilisateur = t_calendrier_events.id_utilisateur 
-        WHERE start_event 
+        WHERE id_utilisateur = ".$_SESSION['id_utilisateur']." AND start_event 
         BETWEEN '{$start->format('Y-m-d 00:00:00')}' AND '{$end->format('Y-m-d 23:59:59')}' 
         ORDER BY start_event ASC";
         $result = $this->pdo->query($req);
@@ -133,7 +131,7 @@ class Events {
         $statement->execute();
     }
 
-        /**
+    /**
      * Récupère un utilisateur avec une id dans une url
      * @return Event
      * @throws \Exception

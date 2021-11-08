@@ -1,0 +1,15 @@
+{
+    "name": "a.lafarge/base-learn",
+    "autoload": {
+        "psr-4": {
+            "Calendar\\": "Calendar"
+        }
+    },
+    "authors": [
+        {
+            "name": "a.lafarge",
+            "email": "a.lafarge@onlineformapro.com"
+        }
+    ],
+    "require": {}
+}

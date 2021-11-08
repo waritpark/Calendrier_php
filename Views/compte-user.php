@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['role']!=1) {
+if($_SESSION['id_utilisateur']=="") {
     header('location:../Forms/connexion.php');
 }
 
@@ -12,8 +12,6 @@ require '../Calendar/Validator-event.class.php';
 
 $pdo = get_pdo();
 $events = new Calendrier\Events($pdo);
-
-
 ?>
 
 
@@ -25,7 +23,7 @@ $events = new Calendrier\Events($pdo);
 $req1 ='SELECT * FROM t_utilisateur WHERE ID_utilisateur='.$_SESSION['id_utilisateur'].'';
 $result=$pdo->query($req1);
 while ($row=$result->fetch(PDO::FETCH_ASSOC)){ 
-$id =$row['ID_utilisateur'];
+$id = $row['ID_utilisateur'];
 ?>
     <div class="mb-3">
         <label for="mail" class="form-label">Adresse mail</label>
@@ -43,31 +41,25 @@ $id =$row['ID_utilisateur'];
         <label for="prenom" class="form-label">Prénom</label>
         <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $row['prenom'] ?>">
     </div>
-    <div class="mb-3">
-        <label for="role_id" class="form-label">Role id</label>
-        <input type="number" class="form-control" id="role_id" name="role_id" value="<?= $row['role_id'] ?>">
-    </div>
     <?php } ?>
     <button type="submit" class="btn btn-primary mb-4">Modifier</button>
 </form>
+
 <?php 
 if(isset($_POST['mail'])
     && isset($_POST['pseudo'])
     && isset($_POST['nom'])
-    && isset($_POST['prenom'])
-    && isset($_POST['role_id'])) {
+    && isset($_POST['prenom'])) {
         $mail=$_POST['mail'];
         $pseudo=$_POST['pseudo'];
         $nom=$_POST['nom'];
         $prenom=$_POST['prenom'];
-        $role_id=$_POST['role_id'];
-        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, pseudo=:pseudo, nom=:nom, prenom=:prenom, role_id=:role_id WHERE ID_utilisateur='.$id.'');
+        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, pseudo=:pseudo, nom=:nom, prenom=:prenom WHERE ID_utilisateur='.$id.'');
         $req2->execute(array(
             'mail' => $mail,
             'pseudo' => $pseudo,
             'nom' => $nom,
-            'prenom' => $prenom,
-            'role_id' => $role_id,
+            'prenom' => $prenom
         ));
         header('location:http://localhost/base-learn/Views/dashboard.php?edit=1');
     }

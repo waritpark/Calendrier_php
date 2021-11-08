@@ -152,32 +152,3 @@
     width: 500px;
 }
 
-
-/* week tableau */
-#week-table td {
-    height: 500px;
-}
-#week-table tbody tr td .btn-afficher {
-    bottom: 10px;
-    left: 14px;
-}
-.border-table-bottom {
-    border-bottom: 1px solid #dee2e6!important;
-}
-.border-table-top {
-    border-top: 1px solid #dee2e6!important;
-}
-.border-table-0 {
-    border-width: 0!important;
-}
-.border-color-1 {
-    border-color: #dee2e6!important;;
-}
-.number-day {
-    left: 15px;
-}
-.border-week-table {
-    height: 1px;
-    left: 0;
-    top: 40px;
-}

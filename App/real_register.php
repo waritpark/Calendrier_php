@@ -8,7 +8,6 @@ $pseudo = valid_donnees($_POST["pseudo"]);
 $password = valid_donnees($_POST["password"]);
 $nom = valid_donnees($_POST["password"]);
 $prenom = valid_donnees($_POST["password"]);
-$metier = valid_donnees($_POST["password"]);
 
 
 function valid_donnees($donnees){

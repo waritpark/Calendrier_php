@@ -4,13 +4,10 @@ if($_SESSION['role']!=1){
     header('Location:http://localhost/base-learn/');
 }
 require '../App/bdd.php';
-
-
-
-
 require '../Views/header.php'; ?>
 
-<table class="table table-striped" id="table-stats">
+
+<table class="table table-striped align-middle" id="table-stats">
     <thead>
         <tr>
             <th>ID</th>
