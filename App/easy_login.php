@@ -18,7 +18,7 @@ if(isset($_POST['mail'])
                 $_SESSION['id_utilisateur']=$resultrow['ID_utilisateur'];
                 $_SESSION['pseudo']=$resultrow['pseudo'];
                 $_SESSION['role']=$resultrow['role_id'];
-                header('Location:../Views/dashboard.php');
+                header('Location:../Views/calendar/dashboard.php');
             }
             else {
                 header('Location:../Forms/connexion.php');

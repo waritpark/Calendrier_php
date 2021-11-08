@@ -16,7 +16,7 @@ if(isset($_POST['mail']) && isset($_POST['password']))  {
                     if($mail !="") {
                         $_SESSION['pseudo']=$resultrow['pseudo'];
                         $_SESSION['role']=$resultrow['role_id'];
-                        header('Location:../Views/dashboard.php');
+                        header('Location:../Views/calendar/dashboard.php');
                     }
                     else {
                         array_push($_SESSION['connexion'],"L'adresse mail est invalide.");

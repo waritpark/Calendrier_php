@@ -3,7 +3,7 @@
         header('location:../index.php');
     } ?>
 <?php require('../App/bdd.php'); ?>
-<?php require('../Views/header.php'); ?>
+<?php require('../Views/includes/header.php'); ?>
 
     <div class="row text-center justify-content-center">
         <div class="col-6">
@@ -37,6 +37,6 @@
         </div>
     </div>
 
-<?php require('../Views/footer.php'); ?>
+<?php require('../Views/includes/footer.php'); ?>
 
 <?php unset($_SESSION['recuperation']) ?>

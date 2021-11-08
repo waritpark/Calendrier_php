@@ -11,5 +11,7 @@
             "email": "a.lafarge@onlineformapro.com"
         }
     ],
-    "require": {}
+    "require": {
+        "altorouter/altorouter": "^2.0"
+    }
 }

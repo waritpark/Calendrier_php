@@ -1,6 +1,6 @@
 <?php session_start(); ?>
 <?php require('../App/bdd.php'); ?>
-<?php require('../Views/header.php'); ?>
+<?php require('../Views/includes/header.php'); ?>
 
 
 
@@ -45,6 +45,6 @@
         </div>
     </div>
 
-<?php require('../Views/footer.php'); ?>
+<?php require('../Views/includes/footer.php'); ?>
 
 <?php unset($_SESSION['inscription']) ?>

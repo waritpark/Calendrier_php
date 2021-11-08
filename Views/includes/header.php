@@ -15,14 +15,14 @@
     <?php if(isset($_SESSION['id_utilisateur'])) { ?>
         <nav class="position-relative">
             <ul class="nav flex-row align-items-center">
-                <a class="text-sm-center nav-link text-dark" href="../Views/dashboard.php"><h1 class="font-family-roboto"><li>base-learn</li></h1></a>
-                <a class="text-sm-center nav-link text-dark" href="../Views/dashboard.php"><li>Mon calendrier</li></a>
-                <a class="text-sm-center nav-link text-dark" href="../Views/ajout-evenement.php"><li>Nouvel événement</li></a>
-                <a class="text-sm-center nav-link text-dark" href="../Views/compte-user.php"><li>Mon compte</li></a>
+                <a class="text-sm-center nav-link text-dark" href="../../Views/calendar/dashboard.php"><h1 class="font-family-roboto"><li>base-learn</li></h1></a>
+                <a class="text-sm-center nav-link text-dark" href="../../Views/calendar/dashboard.php"><li>Mon calendrier</li></a>
+                <a class="text-sm-center nav-link text-dark" href="../../Views/calendar/ajout-evenement.php"><li>Nouvel événement</li></a>
+                <a class="text-sm-center nav-link text-dark" href="../../Views/users/compte-user.php"><li>Mon compte</li></a>
                 <?php if($_SESSION['role']==1): ?>
-                    <a class="text-sm-center nav-link text-dark" href="../Views/stats.php"><li>Statistiques</li></a>
+                    <a class="text-sm-center nav-link text-dark" href="../calendar/stats.php"><li>Statistiques</li></a>
                 <?php endif;?>
-                <a class="position-absolute right-70 text-sm-center nav-link text-dark" href="../App/deconnexion.php"><li>Déconnexion</li></a>
+                <a class="position-absolute right-70 text-sm-center nav-link text-dark" href="../../App/deconnexion.php"><li>Déconnexion</li></a>
             </ul>
         </nav>
         <?php } else {?>

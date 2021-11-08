@@ -3,8 +3,8 @@ session_start();
 if($_SESSION['role']!=1){
     header('Location:http://localhost/base-learn/');
 }
-require '../App/bdd.php';
-require '../Views/header.php'; ?>
+require '../../App/bdd.php';
+require '../../Views/includes/header.php'; ?>
 
 
 <table class="table table-striped align-middle" id="table-stats">
@@ -31,15 +31,15 @@ require '../Views/header.php'; ?>
             <td><?= $row['prenom']; ?></td>
             <td><?= $row['role_id']; ?></td>
             <?php if($row['mail'] != 'arthur@arthur.fr'): ?>
-                <td><a class="btn btn-warning" href="edit-user.php?id_user=<?=$row['ID_utilisateur'];?>">Modifier</a></td>
-                <td><a class="btn btn-danger" href="supp-user.php?id_user=<?=$row['ID_utilisateur'];?>">Supprimer</a></td>
+                <td><a class="btn btn-warning" href="../users/edit-user.php?id_user=<?=$row['ID_utilisateur'];?>">Modifier</a></td>
+                <td><a class="btn btn-danger" href="../users/supp-user.php?id_user=<?=$row['ID_utilisateur'];?>">Supprimer</a></td>
             <?php endif; ?>
         </tr>
         <?php } ?>
     </tbody>
 </table>
 
-<?php include '../Views/footer.php'; ?>
+<?php include '../../Views/includes/footer.php'; ?>
 
 
 

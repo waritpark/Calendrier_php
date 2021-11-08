@@ -1,14 +1,14 @@
 <?php
     session_start();
     if($_SESSION['id_utilisateur']=="") {
-        header('location:../Forms/connexion.php');
+        header('location:../../Forms/connexion.php');
     }
 ?> 
 
 <?php  
-require '../App/bdd.php';
-require '../Calendar/Month.class.php';
-require '../Calendar/Events.class.php';
+require '../../App/bdd.php';
+require '../../Calendar/Month.class.php';
+require '../../Calendar/Events.class.php';
 $pdo = get_pdo();
 $events = new Calendrier\Events($pdo);
 $month = new Calendrier\Month($_GET['month'] ?? null, $_GET['year'] ?? null);
@@ -18,16 +18,16 @@ $weeks = $month->getWeeks();
 $end = $start->modify('+' . (6 + 7 *($weeks -1)) . ' days');
 $events = $events->getEventsBetweenByDay($start, $end);
 ?>
-<?php require '../Views/header.php'; ?>
+<?php require '../../Views/includes/header.php'; ?>
 
         <?php if($_SESSION['role']== 2 || $_SESSION['role']== 1):  ?>
         <div class="mb-5 d-flex align-items-center justify-content-center">
                 <a class="arrow-rotate180" href="dashboard.php?month=<?=$month->previousMonth()->month;?>&year=<?=$month->previousMonth()->year;?>">
-                    <img src="../Public/imgs/arrow.png" class="arrow-btn">
+                    <img src="../../Public/imgs/arrow.png" class="arrow-btn">
                 </a>
                 <h1 class="mx-5 w-300 d-flex justify-content-center"><?php echo $month->toString(); ?></h1>
                 <a class="" href="dashboard.php?month=<?=$month->nextMonth()->month;?>&year=<?=$month->nextMonth()->year;?>">
-                    <img src="../Public/imgs/arrow.png" class="arrow-btn">
+                    <img src="../../Public/imgs/arrow.png" class="arrow-btn">
                 </a>
         </div>  
         <!-- modal de sauvegarde success -->
@@ -120,4 +120,4 @@ $events = $events->getEventsBetweenByDay($start, $end);
         </a> -->
         <?php endif; ?>
 
-<?php include '../Views/footer.php'; ?>
+<?php include '../../Views/includes/footer.php'; ?>
