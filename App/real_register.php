@@ -74,7 +74,7 @@ if (isset($_POST["mail"])
                                                             }
                                                             else {
                                                                 try {
-                                                                    $req = $pdo->prepare("INSERT INTO t_utilisateur (mail, pseudo, nom, prenom, mdp, role_id) VALUES (:mail, :pseudo, nom:, prenom:, :mdp, 2)");
+                                                                    $req = $pdo->prepare("INSERT INTO t_utilisateur (mail, pseudo, nom, prenom, mdp, role_user) VALUES (:mail, :pseudo, nom:, prenom:, :mdp, 2)");
                                                                     $req->fetch(PDO::FETCH_ASSOC);
                                                                     $req->execute(array(
                                                                         "mail" => $mail,

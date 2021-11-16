@@ -25,10 +25,10 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         $event->setStart(DateTime::createFromFormat('Y-m-d H:i', $data['date']. ' ' .$data['start'])->format('Y-m-d H:i:s'));
         $event->setEnd(DateTime::createFromFormat('Y-m-d H:i', $data['date']. ' ' . $data['end'])->format('Y-m-d H:i:s'));
         $event->setIdUser($_SESSION['id_utilisateur'],PDO::PARAM_INT);
-        debug($event);
+        //debug($event);
         $events = new \Calendrier\Events(get_pdo());
         $events->create($event);
-        header('Location:../../Views/calendar/dashboard.php?success=1');
+        header('Location:../calendar/dashboard.php?success=1');
         exit();
     }
 }

@@ -36,7 +36,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
         debug($event);
         $events = new \Calendrier\Events(get_pdo());
         $events->create($event);
-        header('Location:../Views/calendar/dashboard.php?success=1');
+        header('Location:../calendar/dashboard.php?success=1');
         exit();
     }
 }
@@ -57,8 +57,7 @@ $dt = DateTime::createFromFormat('d/m/Y', $date);
 
 <?php setlocale(LC_TIME, 'fra_fra'); ?>
     <div class="col-12">
-        <h2 class="w-max-content m-0 mb-4"><?= strftime('%A %d %B %Y', strtotime($date));
-?></h2>
+        <h2 class="w-max-content m-0 mb-4"><?= strftime('%A %d %B %Y', strtotime($date));?></h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -69,17 +68,17 @@ $dt = DateTime::createFromFormat('d/m/Y', $date);
                 </tr>
             </thead>
             <tbody class="align-middle">
-                    <?php foreach($events as $event): ?>
-                        <tr class="align-items-center fs-6">
-                            <td><?= (new DateTimeImmutable($event['start_event']))->format('H:i'); ?></td>
-                            <td><?php echo $event['nom_event']; ?></td>
-                            <td><?php echo $event['desc_event'];?></td>
-                            <td>
-                                <a class="btn text-black btn-warning bg-gradient p-2" href="edit-evenement.php?id_event=<?php echo $event['id_event'];?>">Modifier</a>
-                                <a class="btn text-white btn-danger bg-gradient p-2" href="delete-evenement.php?id_event=<?php echo $event['id_event'];?>">Supprimer</a>
-                            </td>
+                <?php foreach($events as $event): ?>
+                    <tr class="align-items-center fs-6">
+                        <td><?= (new DateTimeImmutable($event['start_event']))->format('H:i'); ?></td>
+                        <td><?php echo $event['nom_event']; ?></td>
+                        <td><?php echo $event['desc_event'];?></td>
+                        <td>
+                            <a class="btn text-black btn-warning bg-gradient p-2" href="edit-evenement.php?id_event=<?php echo $event['id_event'];?>">Modifier</a>
+                            <a class="btn text-white btn-danger bg-gradient p-2" href="delete-evenement.php?id_event=<?php echo $event['id_event'];?>">Supprimer</a>
+                        </td>
                     </tr>
-                    <?php endforeach; ?>
+                <?php endforeach; ?>
             </tbody>
         </table>
     <button type="button" class="btn btn-success" id="btn-afficher-form" onclick="afficherForm()">Ajouter un événement</button>

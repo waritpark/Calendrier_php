@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['role']!=1) {
+if($_SESSION['role_user']!=1) {
     header('location:../../Forms/connexion.php');
 }
 

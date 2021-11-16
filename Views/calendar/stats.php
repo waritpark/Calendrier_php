@@ -1,6 +1,6 @@
 <?php 
 session_start();
-if($_SESSION['role']!=1){
+if($_SESSION['role_user']!=1){
     header('Location:http://localhost/base-learn/');
 }
 require '../../App/bdd.php';
@@ -20,7 +20,7 @@ require '../../Views/includes/header.php'; ?>
         </tr>
     </thead>
     <tbody>
-    <?php $req1 = "SELECT ID_utilisateur, mail, pseudo, nom, prenom, role_id FROM t_utilisateur ORDER BY ID_utilisateur ASC";
+    <?php $req1 = "SELECT ID_utilisateur, mail, pseudo, nom, prenom, role_user FROM t_utilisateur ORDER BY ID_utilisateur ASC";
     $result=$pdo->query($req1);
     while ($row=$result->fetch(PDO::FETCH_ASSOC)){ ?>
         <tr>
@@ -29,7 +29,7 @@ require '../../Views/includes/header.php'; ?>
             <td><?= $row['pseudo']; ?></td>
             <td><?= $row['nom']; ?></td>
             <td><?= $row['prenom']; ?></td>
-            <td><?= $row['role_id']; ?></td>
+            <td><?= $row['role_user']; ?></td>
             <?php if($row['mail'] != 'arthur@arthur.fr'): ?>
                 <td><a class="btn btn-warning" href="../users/edit-user.php?id_user=<?=$row['ID_utilisateur'];?>">Modifier</a></td>
                 <td><a class="btn btn-danger" href="../users/supp-user.php?id_user=<?=$row['ID_utilisateur'];?>">Supprimer</a></td>

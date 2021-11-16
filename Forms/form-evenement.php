@@ -32,5 +32,4 @@
         <?php if (isset($errors['time'])): ?>
         <p class="alert alert-danger"><?= $errors['time']; ?></p>
         <?php endif;?>
-
     </div>

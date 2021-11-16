@@ -20,7 +20,7 @@ $events = $events->getEventsBetweenByDay($start, $end);
 ?>
 <?php require '../../Views/includes/header.php'; ?>
 
-        <?php if($_SESSION['role']== 2 || $_SESSION['role']== 1):  ?>
+        <?php if($_SESSION['role_user']== 2 || $_SESSION['role_user']== 1):  ?>
         <div class="mb-5 d-flex align-items-center justify-content-center">
                 <a class="arrow-rotate180" href="dashboard.php?month=<?=$month->previousMonth()->month;?>&year=<?=$month->previousMonth()->year;?>">
                     <img src="../../Public/imgs/arrow.png" class="arrow-btn">
