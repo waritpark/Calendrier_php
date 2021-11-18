@@ -124,6 +124,9 @@
 .w-max-content {
     width: max-content;
 }
+.vh-50 {
+    height: 50vh;
+}
 .vh-80 {
     height: 80vh;
 }

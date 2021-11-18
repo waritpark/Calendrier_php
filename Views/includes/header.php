@@ -20,7 +20,7 @@
                 <a class="text-sm-center nav-link text-dark" href="../../Views/calendar/ajout-evenement.php"><li>Nouvel événement</li></a>
                 <a class="text-sm-center nav-link text-dark" href="../../Views/users/compte-user.php"><li>Mon compte</li></a>
                 <?php if($_SESSION['role_user']==1): ?>
-                    <a class="text-sm-center nav-link text-dark" href="../calendar/stats.php"><li>Statistiques</li></a>
+                    <a class="text-sm-center nav-link text-dark" href="../users/stats.php"><li>Statistiques</li></a>
                 <?php endif;?>
                 <a class="position-absolute right-70 text-sm-center nav-link text-dark" href="../../App/deconnexion.php"><li>Déconnexion</li></a>
             </ul>

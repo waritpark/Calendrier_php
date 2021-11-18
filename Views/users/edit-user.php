@@ -62,7 +62,7 @@ if(isset($_POST['mail'])
             'prenom' => $prenom,
             'role_user' => $role_user,
         ));
-        header('location:http://localhost/base-learn/Views/calendar/stats.php?edit=1');
+        header('location:http://localhost/base-learn/Views/users/stats.php?edit=1');
     }
     ?>
 

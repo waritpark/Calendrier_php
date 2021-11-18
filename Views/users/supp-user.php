@@ -13,6 +13,6 @@ require '../../Calendar/Validator-event.class.php';
 $pdo = get_pdo();
 $events = new Calendrier\Events($pdo);
 $event = $events->DeleteUser($_GET['id_user']);
-header("location:http://localhost/base-learn/Views/calendar/stats.php?supp=1"); 
+header("location:http://localhost/base-learn/Views/users/stats.php?supp=1"); 
  
 ?>
