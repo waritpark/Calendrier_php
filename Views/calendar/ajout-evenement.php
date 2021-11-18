@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['pseudo']=="") {
+if($_SESSION['mail']=="") {
     header('location:../../Forms/connexion.php');
 }
 
@@ -35,7 +35,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST') {
 ?>
 <?php require '../../Views/includes/header.php'; ?>
 
-<legendfield class="h2">Ajout d'un nouvel événement</legendfield>
+<h2>Ajout d'un nouvel événement</h2>
 <form action="#" method="post" class="mt-4 form-ajout-event">
     <?php render('../../Forms/form-evenement.php', ['data'=>$data, 'errors'=>$errors]); ?>
     <button type="submit" class="btn btn-primary mb-4">Ajouter</button>

@@ -17,7 +17,7 @@ $events = new Calendrier\Events($pdo);
 
 <?php require '../../Views/includes/header.php'; ?>
 
-<legendfield class="h2">Modifier les informations</legendfield>
+<h2>Modifier les informations</h2>
 <form action="" method="post" class="mt-4 form-ajout-event">
 <?php 
 $req1 ='SELECT * FROM t_utilisateur WHERE ID_utilisateur='.$_SESSION['id_utilisateur'].'';
@@ -30,10 +30,6 @@ $id = $row['ID_utilisateur'];
         <input type="email" class="form-control" id="mail" name="mail" value="<?= $row['mail'] ?>">
     </div>
     <div class="mb-3">
-        <label for="pseudo" class="form-label">Pseudo</label>
-        <input type="text" class="form-control" name="pseudo" id="pseudo" value="<?= $row['pseudo'] ?>">
-    </div>
-    <div class="mb-3">
         <label for="nom" class="form-label">Nom</label>
         <input type="text" class="form-control" name="nom" id="nom" value="<?= $row['nom'] ?>">
     </div>
@@ -41,23 +37,31 @@ $id = $row['ID_utilisateur'];
         <label for="prenom" class="form-label">Prénom</label>
         <input type="text" class="form-control" name="prenom" id="prenom" value="<?= $row['prenom'] ?>">
     </div>
+    <div id="pass1">
+
+    </div>
+
+    <div id="pass2">
+
+    </div>
     <?php } ?>
-    <button type="submit" class="btn btn-primary mb-4">Modifier</button>
+    <div class="d-flex justify-content-between" id="container-btn">
+        <div class="btn btn-secondary mb-4 d-none" id="btnCheck" onclick="suppPass()">Annuler</div>
+        <div class="btn btn-secondary mb-4" id="btnPass" onclick="afficherPass()">Modifier le mot de passe</div>
+        <button type="submit" class="btn btn-primary mb-4">Enregistrer</button>
+    </div>
 </form>
 
 <?php 
 if(isset($_POST['mail'])
-    && isset($_POST['pseudo'])
     && isset($_POST['nom'])
     && isset($_POST['prenom'])) {
         $mail=$_POST['mail'];
-        $pseudo=$_POST['pseudo'];
         $nom=$_POST['nom'];
         $prenom=$_POST['prenom'];
-        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, pseudo=:pseudo, nom=:nom, prenom=:prenom WHERE ID_utilisateur='.$id.'');
+        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, nom=:nom, prenom=:prenom WHERE ID_utilisateur='.$id.'');
         $req2->execute(array(
             'mail' => $mail,
-            'pseudo' => $pseudo,
             'nom' => $nom,
             'prenom' => $prenom
         ));

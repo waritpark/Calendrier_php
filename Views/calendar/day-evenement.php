@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['pseudo']=="") {
+if($_SESSION['mail']=="") {
     header('location:../../Forms/connexion.php');
 }
 
@@ -55,7 +55,7 @@ $dt = DateTime::createFromFormat('d/m/Y', $date);
 
 <?php require '../../Views/includes/header.php'; ?>
 
-<?php setlocale(LC_TIME, 'fra_fra'); ?>
+<?php setlocale (LC_TIME, 'fr.utf8'); ?>
     <div class="col-12">
         <h2 class="w-max-content m-0 mb-4"><?= strftime('%A %d %B %Y', strtotime($date));?></h2>
         <table class="table table-striped">
@@ -84,7 +84,7 @@ $dt = DateTime::createFromFormat('d/m/Y', $date);
     <button type="button" class="btn btn-success" id="btn-afficher-form" onclick="afficherForm()">Ajouter un événement</button>
     </div>
     <div class="col-12 d-none mt-4" id="container-form-ajout-event">
-        <legendfield class="h2">Ajout d'un nouvel événement</legendfield>
+        <h2>Ajout d'un nouvel événement</h2>
         <form action="#" method="post" class="mt-4 form-ajout-event">
             <?php render('../../Forms/form-evenement.php', ['data'=>$data, 'errors'=>$errors]); ?>
             <button type="submit" class="btn btn-primary mb-4">Ajouter</button>
