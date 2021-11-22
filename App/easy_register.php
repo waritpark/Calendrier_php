@@ -27,16 +27,16 @@ if (isset($_POST["mail"])
     $user = $req1->fetch();
     if ($user) {
         array_push($_SESSION['inscription'],"Ce mail est deja pris !");
-        header("Location:inscription.php");
+        header("Location:../Forms/inscription.php");
     }
     else {
         try {
             $req = $pdo->prepare("INSERT INTO t_utilisateur (mail, mdp, role_user) VALUES (:mail, :mdp, 2)");
-            $req->fetch(PDO::FETCH_ASSOC);
             $req->execute(array(
                 "mail" => $mail,
                 "mdp" => $pass_hash
                 ));
+            $req->fetch(PDO::FETCH_ASSOC);
             header('Location: ../Forms/connexion.php');
         }
         catch(PDOException $e) {
@@ -46,7 +46,7 @@ if (isset($_POST["mail"])
 }
 else {
     array_push($_SESSION['inscription'],"Erreur dans la grosse condition.");
-    header("Location: inscription.php");
+    header("Location: ../Forms/inscription.php");
 }
 
 

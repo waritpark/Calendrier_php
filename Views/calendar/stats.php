@@ -29,8 +29,12 @@ require '../../Views/includes/header.php'; ?>
             <td><?= $row['prenom']; ?></td>
             <td><?= $row['role_user']; ?></td>
             <?php if($row['mail'] != 'arthur@arthur.fr'): ?>
-                <td><a class="btn btn-warning" href="../users/edit-user.php?id_user=<?=$row['ID_utilisateur'];?>">Modifier</a></td>
-                <td><a class="btn btn-danger" href="../users/supp-user.php?id_user=<?=$row['ID_utilisateur'];?>">Supprimer</a></td>
+                <td>
+                    <a class="btn btn-warning" href="../users/edit-user.php?id_user=<?=$row['ID_utilisateur'];?>">Modifier</a>
+                    <a class="btn btn-danger" href="../users/supp-user.php?id_user=<?=$row['ID_utilisateur'];?>">Supprimer</a>
+                </td>
+            <?php else: ?>
+                <td></td>
             <?php endif; ?>
         </tr>
         <?php } ?>
