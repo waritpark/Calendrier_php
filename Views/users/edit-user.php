@@ -19,7 +19,7 @@ $events = new Calendrier\Events($pdo);
 
 <?php require '../../Views/includes/header.php'; ?>
 
-<h2>Modifier les informations</h2>
+<legendfield class="h2">Modifier les informations</legendfield>
 <form action="" method="post" class="mt-4 form-ajout-event">
 <?php 
 $req1 ='SELECT * FROM t_utilisateur WHERE ID_utilisateur='.$_GET['id_user'].'';
@@ -30,6 +30,10 @@ $id =$row['ID_utilisateur'];
     <div class="mb-3">
         <label for="mail" class="form-label">Adresse mail</label>
         <input type="email" class="form-control" id="mail" name="mail" value="<?= $row['mail'] ?>">
+    </div>
+    <div class="mb-3">
+        <label for="pseudo" class="form-label">Pseudo</label>
+        <input type="text" class="form-control" name="pseudo" id="pseudo" value="<?= $row['pseudo'] ?>">
     </div>
     <div class="mb-3">
         <label for="nom" class="form-label">Nom</label>
@@ -48,16 +52,19 @@ $id =$row['ID_utilisateur'];
 </form>
 <?php 
 if(isset($_POST['mail'])
+    && isset($_POST['pseudo'])
     && isset($_POST['nom'])
     && isset($_POST['prenom'])
     && isset($_POST['role_user'])) {
         $mail=$_POST['mail'];
+        $pseudo=$_POST['pseudo'];
         $nom=$_POST['nom'];
         $prenom=$_POST['prenom'];
         $role_user=$_POST['role_user'];
-        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, nom=:nom, prenom=:prenom, role_user=:role_user WHERE ID_utilisateur='.$id.'');
+        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, pseudo=:pseudo, nom=:nom, prenom=:prenom, role_user=:role_user WHERE ID_utilisateur='.$id.'');
         $req2->execute(array(
             'mail' => $mail,
+            'pseudo' => $pseudo,
             'nom' => $nom,
             'prenom' => $prenom,
             'role_user' => $role_user,

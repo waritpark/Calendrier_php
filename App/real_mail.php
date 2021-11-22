@@ -3,9 +3,12 @@ session_start();
 $_SESSION['recuperation']=[];
 include('bdd.php');
 
-if( isset($_POST['mail']) 
+if(isset($_POST['pseudo']) 
+&& isset($_POST['mail']) 
+&& !empty($_POST['pseudo']) 
 && !empty($_POST['mail'])
 && filter_var($_POST["mail"], FILTER_VALIDATE_EMAIL)) {
+    $pseudo=$_POST['pseudo'];
     $mail=$_POST['mail'];
     $req1=$pdo->prepare("SELECT * FROM t_utilisateur WHERE mail= ?");
     $req1->execute([$mail]);

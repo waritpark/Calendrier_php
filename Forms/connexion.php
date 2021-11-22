@@ -15,7 +15,7 @@
                 <div class="text-danger"><?php echo $error; ?></div>
             <?php }
             }; ?>
-            <h2>Connexion</h2>
+            <legendfield class="h2">Connexion</legendfield>
             <form action="../App/easy_login.php" method="post" class="mt-4">
                 <div class="mb-3">
                     <label for="mail" class="form-label">Adresse mail</label>
@@ -23,10 +23,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="password" class="form-label">Mot de passe</label>
-                    <input type="password" autocomplete="off" class="form-control" id="password" name="password">
+                    <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button type="submit"  class="btn btn-primary w-auto">Connexion</button>
+                    <button type="submit" class="btn btn-primary w-auto">Connexion</button>
                     <a href="recuperation.php" class="w-auto">Mot de passe oublié ?</a>
                 </div>
             </form>

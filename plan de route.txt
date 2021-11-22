@@ -27,6 +27,7 @@ Fonctionnalités :
 --- Informations : ---
 
 - mail
+- pseudo
 - nom
 - prenom
 - mot de passe

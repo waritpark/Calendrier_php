@@ -16,8 +16,8 @@ if(isset($_POST['mail'])
         if (password_verify($mdp, $resultrow['mdp'])) {
             if($mail!="") {
                 $_SESSION['id_utilisateur']=$resultrow['ID_utilisateur'];
+                $_SESSION['pseudo']=$resultrow['pseudo'];
                 $_SESSION['role_user']=$resultrow['role_user'];
-                $_SESSION['mail']=$resultrow['mail'];
                 header('Location:../Views/calendar/dashboard.php');
             }
             else {

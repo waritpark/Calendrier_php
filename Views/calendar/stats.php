@@ -12,6 +12,7 @@ require '../../Views/includes/header.php'; ?>
         <tr>
             <th>ID</th>
             <th>Mail</th>
+            <th>Pseudo</th>
             <th>Nom</th>
             <th>Prénom</th>
             <th>Role ID</th>
@@ -19,12 +20,13 @@ require '../../Views/includes/header.php'; ?>
         </tr>
     </thead>
     <tbody>
-    <?php $req1 = "SELECT ID_utilisateur, mail, nom, prenom, role_user FROM t_utilisateur ORDER BY ID_utilisateur ASC";
+    <?php $req1 = "SELECT ID_utilisateur, mail, pseudo, nom, prenom, role_user FROM t_utilisateur ORDER BY ID_utilisateur ASC";
     $result=$pdo->query($req1);
     while ($row=$result->fetch(PDO::FETCH_ASSOC)){ ?>
         <tr>
             <td><?= $row['ID_utilisateur']; ?></td>
             <td><?= $row['mail']; ?></td>
+            <td><?= $row['pseudo']; ?></td>
             <td><?= $row['nom']; ?></td>
             <td><?= $row['prenom']; ?></td>
             <td><?= $row['role_user']; ?></td>

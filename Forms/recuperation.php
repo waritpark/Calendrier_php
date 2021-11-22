@@ -10,8 +10,13 @@
                 <div class="text-success"><?php echo $error[1]; ?></div>
             <?php }
             }; ?>
-            <h2>Modifier le mot passe</h2>
+            <legendfield class="h2">Modifier le mot passe</legendfield>
             <form action="../App/test_mail.php" method="post" class="mt-4">
+            <div class="mb-3">
+                <div><?php $errs ?></div>
+                <label for="pseudo" class="form-label">Pseudo</label>
+                <input type="text" class="form-control" id="pseudo" name="pseudo">
+            </div>
             <div class="mb-3">
                 <label for="mail" class="form-label">Mail</label>
                 <input type="mail" class="form-control" id="mail" name="mail">
