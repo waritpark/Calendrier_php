@@ -53,7 +53,7 @@ $id = $row['ID_utilisateur'];
 </form>
 
 <?php 
-    if(isset($_POST['mail'])
+if(isset($_POST['mail'])
     && isset($_POST['nom'])
     && isset($_POST['prenom'])) {
         $mail=$_POST['mail'];
@@ -67,7 +67,7 @@ $id = $row['ID_utilisateur'];
         ));
         header('location:http://localhost/base-learn/Views/calendar/dashboard.php?edit=1');
     }
-?>
+    ?>
 
 
 
