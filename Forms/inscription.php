@@ -19,11 +19,6 @@
                 <input type="email" class="form-control" id="mail" name="mail" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-                <label for="pseudo" class="form-label">Pseudo</label>
-                <input type="text" class="form-control" name="pseudo" id="pseudo">
-                <div class="fw-lighter">Votre pseudo doit contenir au minimum 6 caractères.</div>
-            </div>
-            <div class="mb-3">
                 <label for="nom" class="form-label">Nom</label>
                 <input type="text" class="form-control" name="nom" id="nom">
             </div>

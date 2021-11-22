@@ -29,10 +29,7 @@ $id = $row['ID_utilisateur'];
         <label for="mail" class="form-label">Adresse mail</label>
         <input type="email" class="form-control" id="mail" name="mail" value="<?= $row['mail'] ?>">
     </div>
-    <div class="mb-3">
-        <label for="pseudo" class="form-label">Pseudo</label>
-        <input type="text" class="form-control" name="pseudo" id="pseudo" value="<?= $row['pseudo'] ?>">
-    </div>
+
     <div class="mb-3">
         <label for="nom" class="form-label">Nom</label>
         <input type="text" class="form-control" name="nom" id="nom" value="<?= $row['nom'] ?>">
@@ -47,17 +44,14 @@ $id = $row['ID_utilisateur'];
 
 <?php 
 if(isset($_POST['mail'])
-    && isset($_POST['pseudo'])
     && isset($_POST['nom'])
     && isset($_POST['prenom'])) {
         $mail=$_POST['mail'];
-        $pseudo=$_POST['pseudo'];
         $nom=$_POST['nom'];
         $prenom=$_POST['prenom'];
-        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, pseudo=:pseudo, nom=:nom, prenom=:prenom WHERE ID_utilisateur='.$id.'');
+        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, nom=:nom, prenom=:prenom WHERE ID_utilisateur='.$id.'');
         $req2->execute(array(
             'mail' => $mail,
-            'pseudo' => $pseudo,
             'nom' => $nom,
             'prenom' => $prenom
         ));

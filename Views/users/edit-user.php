@@ -32,10 +32,6 @@ $id =$row['ID_utilisateur'];
         <input type="email" class="form-control" id="mail" name="mail" value="<?= $row['mail'] ?>">
     </div>
     <div class="mb-3">
-        <label for="pseudo" class="form-label">Pseudo</label>
-        <input type="text" class="form-control" name="pseudo" id="pseudo" value="<?= $row['pseudo'] ?>">
-    </div>
-    <div class="mb-3">
         <label for="nom" class="form-label">Nom</label>
         <input type="text" class="form-control" name="nom" id="nom" value="<?= $row['nom'] ?>">
     </div>
@@ -52,19 +48,16 @@ $id =$row['ID_utilisateur'];
 </form>
 <?php 
 if(isset($_POST['mail'])
-    && isset($_POST['pseudo'])
     && isset($_POST['nom'])
     && isset($_POST['prenom'])
     && isset($_POST['role_user'])) {
         $mail=$_POST['mail'];
-        $pseudo=$_POST['pseudo'];
         $nom=$_POST['nom'];
         $prenom=$_POST['prenom'];
         $role_user=$_POST['role_user'];
-        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, pseudo=:pseudo, nom=:nom, prenom=:prenom, role_user=:role_user WHERE ID_utilisateur='.$id.'');
+        $req2=$pdo->prepare('UPDATE t_utilisateur SET mail=:mail, nom=:nom, prenom=:prenom, role_user=:role_user WHERE ID_utilisateur='.$id.'');
         $req2->execute(array(
             'mail' => $mail,
-            'pseudo' => $pseudo,
             'nom' => $nom,
             'prenom' => $prenom,
             'role_user' => $role_user,

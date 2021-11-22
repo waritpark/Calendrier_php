@@ -1,6 +1,6 @@
 <?php
 session_start();
-if($_SESSION['pseudo']=="") {
+if($_SESSION['mail']=="") {
     header('location:../../Forms/connexion.php');
 }
 
